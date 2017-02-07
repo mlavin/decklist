@@ -39,12 +39,17 @@ PTCGO_MAPPING = {
     'SUM': 'sm1',
 }
 
+PROMO_MAPPING = {
+    'XY': 'xyp',
+    'BW': 'bwp',
+}
+
 
 LINE_RE = re.compile(
     '(?P<quantity>\d{1,2})\s'
     '(?P<name>.*)\s'
-    '(?P<set>[-A-Z]{2,6})\s'
-    '(?P<number>\d{1,3})')
+    '((?P<set>[-a-zA-Z]{2,6})\s(?P<number>\d{1,3})|'
+    '(?P<promo>(?P<series>[a-zA-Z]{2})\d{1,3}))')
 
 
 def parse_deck_list(deck):
@@ -54,8 +59,12 @@ def parse_deck_list(deck):
         match = LINE_RE.search(line)
         if match is not None:
             result = match.groupdict()
-            result['id'] = '{}-{}'.format(
-                PTCGO_MAPPING.get(result['set'], ''), result['number'])
+            if result.get('set') is not None:
+                result['id'] = '{}-{}'.format(
+                    PTCGO_MAPPING.get(result['set'].upper(), ''), result['number'])
+            else:
+                result['id'] = '{}-{}'.format(
+                    PROMO_MAPPING.get(result['series'].upper(), ''), result['promo'].upper())
             results.append(result)
     return results
 
