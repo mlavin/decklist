@@ -39,6 +39,7 @@ PTCGO_MAPPING = {
     'SUM': 'sm1',
 }
 
+
 PROMO_MAPPING = {
     'XY': 'xyp',
     'BW': 'bwp',
@@ -67,17 +68,3 @@ def parse_deck_list(deck):
                     PROMO_MAPPING.get(result['series'].upper(), ''), result['promo'].upper())
             results.append(result)
     return results
-
-# total = 0
-# unique = 0
-# with open('decklist.txt', 'r') as f:
-#     for line in f.readlines():
-#         match = LINE_RE.search(line)
-#         if match is not None:
-#             result = match.groupdict()
-#             print(result)
-#             total += int(result['quantity'])
-#             unique += 1
-
-# print(total)
-# print(unique)
