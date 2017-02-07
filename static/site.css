@@ -1,5 +1,42 @@
+/* http://www.colourlovers.com/palette/132637/Odd_but_trendy */
+@import url('http://fonts.googleapis.com/css?family=Noto+Sans');
+
+body {
+    font-family: 'Noto Sans', Helvetica, sans-serif;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+body .main {
+    flex: 1;
+}
+
+header .navbar-default {
+    background-color: #E0EFF1;
+}
+
+header .navbar-default .navbar-nav > .active > a,
+header .navbar-default .navbar-nav > .active > a:focus,
+header .navbar-default .navbar-nav > .active > a:hover {
+    background-color: #7DB4B5;
+    color: #fff;
+}
+
+footer {
+    height: 60px;
+    width: 100%;
+    color: #fff;
+    background-color: #680148;
+}
+
+footer .container {
+    margin: 20px auto;
+}
+
+
 body.results {
-    padding-bottom: 70px;
+    padding-bottom: 60px;
 }
 
 .thumbnail .caption p {
