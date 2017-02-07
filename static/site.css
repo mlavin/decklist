@@ -1,0 +1,16 @@
+body.results {
+    padding-bottom: 70px;
+}
+
+.thumbnail .caption p {
+    font-size: 0.75em;
+    margin: 0;
+}
+
+.thumbnail .caption form {
+    margin: 5px 0 0;
+}
+
+.thumbnail .caption form .control-label {
+    padding-top: 0;
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}Professor Hemlock{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block meta %}{% endblock %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/site.css">
+    {% block css %}{% endblock %}
+</head>
+<body id="{% block body_id %}body{% endblock %}" class="{% block body_class %}body{% endblock %}">
+    <div class="main">
+        <header class="navbar-fixed">
+            <nav class="navbar navbar-default navbar-static-top">
+                <div class="container">
+                    <a href="/" class="navbar-brand">Professor Helmock</a>
+                    {% block nav %}
+                        <ul class="nav navbar-nav">
+                            <li {% if nav_decklist %}class="active"{% endif %}>
+                                <a href="/deckbuilder/">Deck Builder</a>
+                            </li>
+                    {% endblock %}
+                </div>
+            </nav>
+        </header>
+        {% block content %}
+        {% endblock %}
+    </div>
+    <footer>
+        <div class="container">
+            <span class="copyright">&copy; 2017 Mark Lavin</span>
+            <span class="disclaimer pull-right">
+                This website is not produced, endorsed, supported, or affiliated with Nintendo or The Pokémon Company.
+            </span>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    {% block js %}{% endblock %}
+</body>
+</html>

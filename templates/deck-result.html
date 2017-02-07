@@ -1,0 +1,104 @@
+{% extends "deck-form.html" %}
+
+{% block body_class %}results{% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+        <ul class="nav navbar-nav">
+            <li>
+                <a href="/deckbuilder/">
+                    <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+                    Price Another Deck
+                </a>
+            </li>
+        </ul>
+        <ul class="navbar-right">
+            <button type="button" class="btn btn-success navbar-btn">
+                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+                Purchase Deck
+            </button>
+            <p class="navbar-text">Total Cards: <span id="expected-cards">{{ total_cards }}</span></p>
+            <p class="navbar-text">Total Price: $<span id="expected-price">{{ total_cost|currency }}</span></p>
+        </ul>
+    </div>
+</nav>
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 well">
+            Product prices and availability are accurate as of the date/time indicated and are subject to change.
+            Any price and availability information displayed on Amazon.com at the time of purchase
+            will apply to the purchase of this product. This prices do not include shipping.
+            Use the controls below to adjust the list for cards you already have and don't need to purchase.
+        </div>
+    </div>
+    <div class="row">
+        {% for card in results %}
+            <div class="col-xs-6 col-sm-4 col-md-2">
+                <div class="thumbnail">
+                    <strong>{{ card['quantity'] }} x</strong>
+                    <img src="{{ card['imageUrl'] }}" alt="{{ card['name'] }}"
+                        data-toggle="popover"
+                        title="{{ card['name'] }}"
+                        data-content="{{ card['series'] }} - {{ card['set'] }} #{{ card['number'] }} ({{ card['rarity'] }})"
+                        data-placement="top"
+                        data-trigger="hover">
+                    <div class="caption">
+                        <p>Amazon.com Price: ${{ card['price']|currency }}</p>
+                        <p>(as of {{ timestamp }})</p>
+                        <form class="form-horizontal">
+                            <div class="form-group form-group-sm row">
+                                <label for="{{ card['id'] }}-count" class="col-sm-6 control-label">Already Have</label>
+                                <div class="col-sm-6">
+                                    <input type="number" class="form-control"
+                                        data-quantity="{{ card['quantity'] }}" data-card="{{ card['id'] }}"
+                                        data-remaining="{{ card['quantity'] }}"
+                                        id="{{ card['id'] }}-count" value="0">
+                                </div>
+                            </div>
+                        </form>
+                        <span class="label label-success">Subtotal:
+                            $<span id="{{ card['id'] }}-subtotal" data-price="{{ card['price']|currency }}">
+                                {{ card['subtotal']|currency }}
+                            </span>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
+
+{% block js %}
+<script>
+$(document).ready(function() {
+    // Bind the card popovers
+    $('[data-toggle="popover"]').popover();
+    // Recalcuate totals and subtotals
+    $('input[id$="-count"]').change(function () {
+        var input = $(this),
+            value = parseInt(input.val(), 10),
+            quantity = input.data('quantity'),
+            subtotalElement = $('#' + input.data('card') + '-subtotal'),
+            price = subtotalElement.data('price'),
+            remaining = Math.max(quantity - value, 0),
+            subTotal = parseFloat(price) * remaining,
+            remainingTotal = 0,
+            remainingCount = 0;
+        // Show new subtotal
+        input.data('remaining', remaining);
+        subtotalElement.text(subTotal.toFixed(2));
+        // Update totals
+        $('[id$="-subtotal"]').each(function () {
+            remainingTotal += parseFloat($(this).text());
+        });
+        $('[data-remaining]').each(function () {
+            remainingCount += $(this).data('remaining');
+        });
+        $('#expected-cards').text(remainingCount);
+        $('#expected-price').text(remainingTotal.toFixed(2));
+        // TODO: Update cart form
+    });
+});
+</script>
+{% endblock %}
