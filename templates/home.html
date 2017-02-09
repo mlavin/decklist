@@ -1,1 +1,44 @@
 {% extends "base.html" %}
+
+{% block body_id %}home{% endblock %}
+
+{% block content %}
+<div class="header-image">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="overlay">
+                    <h1>Professor Dogwood</h1>
+                    <p class="lead">The easiest way to price and buy your favorite Pokémon Trading Card Game deck</p>
+                    <p><a class="btn btn-cta" href="/deckbuilder/">Upload Your Deck</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="page-header text-center">
+        <h2>How It Works</h2>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-md-4">
+            <h3><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Create a Deck</h3>
+            <p>Export your favorite deck from Pokémon Trading Card Game Online (PTCGO) or copy one
+            of the tournament winning lists from the
+            <a href="http://www.pokemon.com/us/play-pokemon/pokemon-events/championship-series-event-results/">Pokémon Championship Series Events</a>.</p>
+        </div>
+        <div class="col-xs-12 col-md-4">
+            <h3><span class="glyphicon glyphicon-paste" aria-hidden="true"></span> Upload the Deck</h3>
+            <p>Take your deck list exported in the equivalent PTCGO list format and paste it into
+            <a href="/deckbuilder/">our uploader form</a>. We parse the list and find the price of
+            all the cards for you.</p>
+        </div>
+        <div class="col-xs-12 col-md-4">
+            <h3><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Adjust the Cards</h3>
+            <p>Before purchasing the cards you can adjust the numbers to account for cards you already
+            own. With those adjustments you can see the cost of only the cards you need to complete
+            the deck.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

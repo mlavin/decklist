@@ -10,6 +10,7 @@ body {
 
 body .main {
     flex: 1;
+    margin-bottom: 30px;
 }
 
 header .navbar-default {
@@ -34,6 +35,48 @@ footer .container {
     margin: 20px auto;
 }
 
+#home header .navbar {
+    margin-bottom: 0;
+}
+
+#home .header-image {
+    height: 730px;
+    text-align: center;
+    background: url('background.jpg');
+    background-size: cover;
+    position: relative;
+}
+
+#home .header-image::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+#home .header-image .overlay {
+    position: relative;
+    padding: 20% 0;
+    color: #fff;
+    z-index: 1;
+}
+
+#home .header-image .overlay .btn-cta {
+    font-size: 1.25em;
+    padding: 14px 16px;
+    color: #fff;
+    background-color: #680148;
+    border-color: #e7e7e7;
+}
+
+#home .header-image .overlay .btn-cta:hover {
+    color: #ccc;
+}
 
 body.results {
     padding-bottom: 60px;
