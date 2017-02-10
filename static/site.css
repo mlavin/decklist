@@ -66,7 +66,7 @@ footer .container {
     z-index: 1;
 }
 
-#home .header-image .overlay .btn-cta {
+#home .btn-cta {
     font-size: 1.25em;
     padding: 14px 16px;
     color: #fff;
@@ -74,8 +74,22 @@ footer .container {
     border-color: #e7e7e7;
 }
 
-#home .header-image .overlay .btn-cta:hover {
+#home .btn-cta:hover {
     color: #ccc;
+}
+
+#home .how-it-works h3 {
+    margin-top: 20px;
+}
+
+#home .main {
+    margin-bottom: 0;
+}
+
+#home .get-started {
+    margin: 30px 0 0;
+    padding: 30px 0;
+    background-color: #E0EFF1;
 }
 
 body.results {
