@@ -2,12 +2,13 @@ import asyncio
 import datetime
 import os
 import random
+import time
 
 import aiohttp_jinja2
 import jinja2
 import redis
 
-from aiohttp import web
+from aiohttp import web, ClientSession
 
 from parser import parse_deck_list
 
@@ -22,6 +23,20 @@ async def deckform(request):
     return {}
 
 
+async def get_card_price(client, card):
+    url = 'http://pokeprices.doeiqts.com/api/getcard'
+    params = {'cardset': card['set'].lower(), 'cardnumber': card['number']}
+    price = 'N/A'
+    async with client.get(url, params=params) as response:
+        result = await response.json()
+        if result.get('status', '').lower() == 'success':
+            try:
+                price = float(result['cards'][0]['price'])
+            except (ValueError, IndexError, KeyError):
+                price = 'N/A'
+    return price
+
+
 @aiohttp_jinja2.template('deck-result.html')
 async def deckresult(request):
     data = await request.post()
@@ -31,19 +46,30 @@ async def deckresult(request):
     parsed = parse_deck_list(decklist)
     total_cards = 0
     total_cost = 0
-    for card in parsed:
-        if 'id' in card:
-            info = request.app['redis'].hgetall(card['id']) or {}
-            # Need to convert keys from bytes
-            for key, value in info.items():
-                card[key.decode('utf-8')] = value.decode('utf-8')
-            card['price'] = random.random() * 25
-            card['subtotal'] = card['price'] * int(card['quantity'])
-            total_cards += int(card['quantity'])
-            total_cost += card['subtotal']
-            results.append(card)
-        else:
-            errors.append(card['name'])
+    async with ClientSession(loop=loop) as client:
+        for card in parsed:
+            if 'id' in card:
+                info = request.app['redis'].hgetall(card['id']) or {}
+                # Need to convert keys from bytes
+                for key, value in info.items():
+                    card[key.decode('utf-8')] = value.decode('utf-8')
+                price = card.get('price') or None
+                timestamp = card.get('timestamp') or (time.time() - 60 * 60 * 24)
+                if not price or float(timestamp) < (time.time() - 60 * 60 * 12):
+                    price = await get_card_price(client, card)
+                    timestamp = time.time()
+                    request.app['redis'].hmset(card['id'], {'price': price, 'timestamp': timestamp})
+                    card['price'] = price
+                    card['timestamp'] = timestamp
+                card['timestamp'] = datetime.datetime.fromtimestamp(float(card['timestamp'])).strftime('%I:%M %p EST')
+                if card['price'] != 'N/A':
+                    card['price'] = float(card['price'])
+                    card['subtotal'] = card['price'] * int(card['quantity'])
+                    total_cost += card['subtotal']
+                total_cards += int(card['quantity'])
+                results.append(card)
+            else:
+                errors.append(card['name'])
     return {
         'results': results,
         'errors': errors,
@@ -77,5 +103,6 @@ if __name__ == '__main__':
     setup_routes(app)
     env = aiohttp_jinja2.setup(
         app, loader=jinja2.FileSystemLoader(os.path.join(app['base_dir'], 'templates')))
+    env.globals['GA_TRACKING_ID'] = os.environ.get('GA_TRACKING_ID', '')
     env.filters['currency'] = format_currency
     web.run_app(app, host='127.0.0.1', port=int(os.environ.get('PORT', '8080')))

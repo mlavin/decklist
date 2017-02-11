@@ -93,8 +93,16 @@ footer .container {
     background-color: #E0EFF1;
 }
 
-body.results {
-    padding-bottom: 60px;
+.results {
+    padding-bottom: 56px;
+}
+
+.results .navbar-fixed-bottom .navbar-text {
+    font-size: 1.25em;
+}
+
+.results .thumbnail.card > img {
+    height: 210px;
 }
 
 .thumbnail .caption p {
