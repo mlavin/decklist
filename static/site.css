@@ -35,6 +35,18 @@ footer .container {
     margin: 20px auto;
 }
 
+.btn-cta {
+    font-size: 1.25em;
+    padding: 14px 16px;
+    color: #fff;
+    background-color: #680148;
+    border-color: #e7e7e7;
+}
+
+.btn-cta:hover {
+    color: #ccc;
+}
+
 #home header .navbar {
     margin-bottom: 0;
 }
@@ -66,17 +78,6 @@ footer .container {
     z-index: 1;
 }
 
-#home .btn-cta {
-    font-size: 1.25em;
-    padding: 14px 16px;
-    color: #fff;
-    background-color: #680148;
-    border-color: #e7e7e7;
-}
-
-#home .btn-cta:hover {
-    color: #ccc;
-}
 
 #home .how-it-works h3 {
     margin-top: 20px;
