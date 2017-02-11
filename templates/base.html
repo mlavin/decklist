@@ -15,12 +15,19 @@
             <nav class="navbar navbar-default navbar-static-top">
                 <div class="container">
                     <a href="/" class="navbar-brand">Professor Dogwood</a>
-                    {% block nav %}
-                        <ul class="nav navbar-nav">
-                            <li {% if nav_decklist %}class="active"{% endif %}>
-                                <a href="/deckbuilder/">Deck Builder</a>
-                            </li>
-                    {% endblock %}
+                    <ul class="nav navbar-nav">
+                        <li {% if nav_decklist %}class="active"{% endif %}>
+                            <a href="/deckbuilder/">Deck Builder</a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="mailto:info@professordogwood.com">
+                                <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                                Contact
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </nav>
         </header>
