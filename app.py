@@ -26,23 +26,29 @@ async def deckform(request):
 async def deckresult(request):
     data = await request.post()
     decklist = data.get('decklist', '')
-    results = parse_deck_list(decklist)
+    results = []
+    errors = []
+    parsed = parse_deck_list(decklist)
     total_cards = 0
     total_cost = 0
-    for card in results:
-        info = request.app['redis'].hgetall(card['id']) or {}
-        # Need to convert keys from bytes
-        for key, value in info.items():
-            card[key.decode('utf-8')] = value.decode('utf-8')
-        card['price'] = random.random() * 25
-        card['subtotal'] = card['price'] * int(card['quantity'])
-        total_cards += int(card['quantity'])
-        total_cost += card['subtotal']
+    for card in parsed:
+        if 'id' in card:
+            info = request.app['redis'].hgetall(card['id']) or {}
+            # Need to convert keys from bytes
+            for key, value in info.items():
+                card[key.decode('utf-8')] = value.decode('utf-8')
+            card['price'] = random.random() * 25
+            card['subtotal'] = card['price'] * int(card['quantity'])
+            total_cards += int(card['quantity'])
+            total_cost += card['subtotal']
+            results.append(card)
+        else:
+            errors.append(card['name'])
     return {
         'results': results,
+        'errors': errors,
         'total_cards': total_cards,
         'total_cost': total_cost,
-        'errors': {},
         'timestamp': datetime.datetime.now().strftime('%I:%M %p EST')
     }
 

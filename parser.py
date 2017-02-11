@@ -52,6 +52,10 @@ LINE_RE = re.compile(
     '((?P<set>[-a-zA-Z]{2,6})\s(?P<number>\d{1,3})|'
     '(?P<promo>(?P<series>[a-zA-Z]{2})\d{1,3}))')
 
+PARTIAL_RE = re.compile(
+    '(?P<quantity>\d{1,2})\s'
+    '(?P<name>\S+.*)')
+
 
 def parse_deck_list(deck):
     """Parse string which looks like a decklist into a list of dicts."""
@@ -67,4 +71,8 @@ def parse_deck_list(deck):
                 result['id'] = '{}-{}'.format(
                     PROMO_MAPPING.get(result['series'].upper(), ''), result['promo'].upper())
             results.append(result)
+        else:
+            partial = PARTIAL_RE.match(line)
+            if partial is not None:
+                results.append(partial.groupdict())
     return results

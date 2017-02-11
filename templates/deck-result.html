@@ -66,6 +66,19 @@
             </div>
         {% endfor %}
     </div>
+{% if errors %}
+    <div class="row bg-warning well">
+        <div class="col-xs-12">
+            <p>We couldn't find matches for the following card names. For the best
+            accuracy be sure to include the set abbreviation (i.e ROS, BKP, BKT, EVO) and the card number along with the name</p>
+            <ul>
+                {% for error in errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endif %}
 </section>
 {% endblock %}
 
