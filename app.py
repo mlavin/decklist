@@ -49,7 +49,9 @@ async def deckresult(request):
         'errors': errors,
         'total_cards': total_cards,
         'total_cost': total_cost,
-        'timestamp': datetime.datetime.now().strftime('%I:%M %p EST')
+        'timestamp': datetime.datetime.now().strftime('%I:%M %p EST'),
+        'amazon_associate_id': request.app['AWS_ASSOCIATE_ID'],
+        'amazon_access_key': request.app['AWS_ACCESS_KEY_ID'],
     }
 
 
@@ -69,6 +71,9 @@ if __name__ == '__main__':
     app = web.Application(loop=loop)
     app['base_dir'] = os.path.dirname(os.path.abspath(__file__))
     app['redis'] = redis.from_url(url=os.environ.get('REDIS_URL', 'redis://localhost:6379/0'))
+    app['AWS_ASSOCIATE_ID'] = os.environ.get('AWS_ASSOCIATE_ID', '')
+    app['AWS_ACCESS_KEY_ID'] = os.environ.get('AWS_ACCESS_KEY_ID', '')
+    app['AWS_SECRET_KEY'] = os.environ.get('AWS_SECRET_KEY', '')
     setup_routes(app)
     env = aiohttp_jinja2.setup(
         app, loader=jinja2.FileSystemLoader(os.path.join(app['base_dir'], 'templates')))

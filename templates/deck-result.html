@@ -1,5 +1,7 @@
 {% extends "deck-form.html" %}
 
+{% set amazon_enabled = amazon_associate_id and amazon_access_key %}
+
 {% block body_class %}results{% endblock %}
 
 {% block content %}
@@ -14,10 +16,12 @@
             </li>
         </ul>
         <ul class="navbar-right">
-            <button type="button" class="btn btn-success navbar-btn">
-                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-                Purchase Deck
-            </button>
+            {% if amazon_enabled %}
+                <button type="button" class="btn btn-success navbar-btn">
+                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+                    Purchase Deck
+                </button>
+            {% endif %}
             <p class="navbar-text">Total Cards: <span id="expected-cards">{{ total_cards }}</span></p>
             <p class="navbar-text">Total Price: $<span id="expected-price">{{ total_cost|currency }}</span></p>
         </ul>
@@ -26,9 +30,9 @@
 <section class="container">
     <div class="row">
         <div class="col-xs-12 well">
-            Product prices and availability are accurate as of the date/time indicated and are subject to change.
+            {% if amazon_enabled %}Product prices and availability are accurate as of the date/time indicated and are subject to change.
             Any price and availability information displayed on Amazon.com at the time of purchase
-            will apply to the purchase of this product. This prices do not include shipping.
+            will apply to the purchase of this product. This prices do not include shipping.{% endif %}
             Use the controls below to adjust the list for cards you already have and don't need to purchase.
         </div>
     </div>
@@ -44,13 +48,13 @@
                         data-placement="top"
                         data-trigger="hover">
                     <div class="caption">
-                        <p>Amazon.com Price: ${{ card['price']|currency }}</p>
+                        <p>{% if amazon_enabled %}Amazon.com {% endif %}Price: ${{ card['price']|currency }}</p>
                         <p>(as of {{ timestamp }})</p>
                         <form class="form-horizontal">
                             <div class="form-group form-group-sm row">
                                 <label for="{{ card['id'] }}-count" class="col-sm-6 control-label">Already Have</label>
                                 <div class="col-sm-6">
-                                    <input type="number" class="form-control"
+                                    <input type="number" class="form-control" min="0"
                                         data-quantity="{{ card['quantity'] }}" data-card="{{ card['id'] }}"
                                         data-remaining="{{ card['quantity'] }}"
                                         id="{{ card['id'] }}-count" value="0">
@@ -83,35 +87,5 @@
 {% endblock %}
 
 {% block js %}
-<script>
-$(document).ready(function() {
-    // Bind the card popovers
-    $('[data-toggle="popover"]').popover();
-    // Recalcuate totals and subtotals
-    $('input[id$="-count"]').change(function () {
-        var input = $(this),
-            value = parseInt(input.val(), 10),
-            quantity = input.data('quantity'),
-            subtotalElement = $('#' + input.data('card') + '-subtotal'),
-            price = subtotalElement.data('price'),
-            remaining = Math.max(quantity - value, 0),
-            subTotal = parseFloat(price) * remaining,
-            remainingTotal = 0,
-            remainingCount = 0;
-        // Show new subtotal
-        input.data('remaining', remaining);
-        subtotalElement.text(subTotal.toFixed(2));
-        // Update totals
-        $('[id$="-subtotal"]').each(function () {
-            remainingTotal += parseFloat($(this).text());
-        });
-        $('[data-remaining]').each(function () {
-            remainingCount += $(this).data('remaining');
-        });
-        $('#expected-cards').text(remainingCount);
-        $('#expected-price').text(remainingTotal.toFixed(2));
-        // TODO: Update cart form
-    });
-});
-</script>
+<script src="/static/results.js"></script>
 {% endblock %}
