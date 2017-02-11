@@ -75,9 +75,6 @@ async def deckresult(request):
         'errors': errors,
         'total_cards': total_cards,
         'total_cost': total_cost,
-        'timestamp': datetime.datetime.now().strftime('%I:%M %p EST'),
-        'amazon_associate_id': request.app['AWS_ASSOCIATE_ID'],
-        'amazon_access_key': request.app['AWS_ACCESS_KEY_ID'],
     }
 
 
@@ -104,5 +101,7 @@ if __name__ == '__main__':
     env = aiohttp_jinja2.setup(
         app, loader=jinja2.FileSystemLoader(os.path.join(app['base_dir'], 'templates')))
     env.globals['GA_TRACKING_ID'] = os.environ.get('GA_TRACKING_ID', '')
+    env.globals['AWS_ASSOCIATE_ID'] = app['AWS_ASSOCIATE_ID']
+    env.globals['AWS_ACCESS_KEY_ID'] = app['AWS_ACCESS_KEY_ID']
     env.filters['currency'] = format_currency
     web.run_app(app, host='127.0.0.1', port=int(os.environ.get('PORT', '8080')))

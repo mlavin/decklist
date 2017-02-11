@@ -1,6 +1,6 @@
 {% extends "deck-form.html" %}
 
-{% set amazon_enabled = amazon_associate_id and amazon_access_key %}
+{% set amazon_enabled = AWS_ASSOCIATE_ID and AWS_ACCESS_KEY_ID %}
 
 {% block body_class %}results{% endblock %}
 
