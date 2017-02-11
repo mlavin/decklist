@@ -104,4 +104,4 @@ if __name__ == '__main__':
     env.globals['AWS_ASSOCIATE_ID'] = app['AWS_ASSOCIATE_ID']
     env.globals['AWS_ACCESS_KEY_ID'] = app['AWS_ACCESS_KEY_ID']
     env.filters['currency'] = format_currency
-    web.run_app(app, host='127.0.0.1', port=int(os.environ.get('PORT', '8080')))
+    web.run_app(app, port=int(os.environ.get('PORT', '8080')))
