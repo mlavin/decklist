@@ -1,8 +1,11 @@
 import asyncio
+import base64
+import binascii
 import datetime
 import os
 import random
 import time
+import urllib.parse
 
 import aiohttp_jinja2
 import jinja2
@@ -15,11 +18,6 @@ from parser import parse_deck_list
 
 @aiohttp_jinja2.template('home.html')
 async def home(request):
-    return {}
-
-
-@aiohttp_jinja2.template('deck-form.html')
-async def deckform(request):
     return {}
 
 
@@ -37,51 +35,69 @@ async def get_card_price(client, card):
     return price
 
 
-@aiohttp_jinja2.template('deck-result.html')
-async def deckresult(request):
-    data = await request.post()
-    decklist = data.get('decklist', '')
-    results = []
-    errors = []
-    parsed = parse_deck_list(decklist)
-    total_cards = 0
-    total_cost = 0
-    async with ClientSession(loop=loop) as client:
-        for card in parsed:
-            if 'id' in card:
-                info = request.app['redis'].hgetall(card['id']) or {}
-                # Need to convert keys from bytes
-                for key, value in info.items():
-                    card[key.decode('utf-8')] = value.decode('utf-8')
-                price = card.get('price') or None
-                timestamp = card.get('timestamp') or (time.time() - 60 * 60 * 24)
-                if not price or float(timestamp) < (time.time() - 60 * 60 * 12):
-                    price = await get_card_price(client, card)
-                    timestamp = time.time()
-                    request.app['redis'].hmset(card['id'], {'price': price, 'timestamp': timestamp})
-                    card['price'] = price
-                    card['timestamp'] = timestamp
-                card['timestamp'] = datetime.datetime.fromtimestamp(float(card['timestamp'])).strftime('%I:%M %p EST')
-                if card['price'] != 'N/A':
-                    card['price'] = float(card['price'])
-                    card['subtotal'] = card['price'] * int(card['quantity'])
-                    total_cost += card['subtotal']
-                total_cards += int(card['quantity'])
-                results.append(card)
-            else:
-                errors.append(card['name'])
-    return {
-        'results': results,
-        'errors': errors,
-        'total_cards': total_cards,
-        'total_cost': total_cost,
-    }
+@aiohttp_jinja2.template('deck.html')
+async def deck(request):
+    compressed = request.rel_url.query.get('list', '')
+    try:
+        decklist = base64.urlsafe_b64decode(compressed).decode('utf-8')
+    except (binascii.Error, binascii.Incomplete):
+        # Strip off the invalid list
+        raise web.HTTPFound('/deckbuilder/')
+
+    if decklist:
+        results = []
+        errors = []
+        parsed = parse_deck_list(decklist)
+        total_cards = 0
+        total_cost = 0
+        async with ClientSession(loop=loop) as client:
+            for card in parsed:
+                if 'id' in card:
+                    info = request.app['redis'].hgetall(card['id']) or {}
+                    # Need to convert keys from bytes
+                    for key, value in info.items():
+                        card[key.decode('utf-8')] = value.decode('utf-8')
+                    price = card.get('price') or None
+                    timestamp = card.get('timestamp') or (time.time() - 60 * 60 * 24)
+                    if not price or float(timestamp) < (time.time() - 60 * 60 * 12):
+                        price = await get_card_price(client, card)
+                        timestamp = time.time()
+                        request.app['redis'].hmset(
+                            card['id'], {'price': price, 'timestamp': timestamp})
+                        card['price'] = price
+                        card['timestamp'] = timestamp
+                    card['timestamp'] = datetime.datetime.fromtimestamp(
+                        float(card['timestamp'])).strftime('%I:%M %p EST')
+                    if card['price'] != 'N/A':
+                        card['price'] = float(card['price'])
+                        card['subtotal'] = card['price'] * int(card['quantity'])
+                        total_cost += card['subtotal']
+                    total_cards += int(card['quantity'])
+                    results.append(card)
+                else:
+                    errors.append(card['name'])
+        return {
+            'results': results,
+            'errors': errors,
+            'total_cards': total_cards,
+            'total_cost': total_cost,
+        }
+    else:
+        return {}
+
+
+async def decksubmit(request):
+    post = await request.post()
+    decklist = post.get('decklist', '')
+    compressed = base64.urlsafe_b64encode(decklist.encode('utf-8'))
+    location = '/deckbuilder/?' + urllib.parse.urlencode({'list': compressed.decode('utf-8')})
+    raise web.HTTPFound(location)
 
 
 def setup_routes(app):
     app.router.add_get('/', home)
-    app.router.add_get('/deckbuilder/', deckform)
-    app.router.add_post('/deckbuilder/', deckresult)
+    app.router.add_get('/deckbuilder/', deck)
+    app.router.add_post('/deckbuilder/', decksubmit)
     app.router.add_static('/static/', path=os.path.join(app['base_dir'], 'static'), name='static')
 
 

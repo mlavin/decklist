@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% set nav_decklist = True %}
+{% set body_class = 'results' if results is defined else 'form' %}
+
+{% block title %}{{ super() }} - Deck Price Calculator{% endblock %}
+
+{% block content %}
+    {% if results is defined %}
+        {% include "deck-result.html" %}
+    {% else %}
+        {% include "deck-form.html" %}
+    {% endif %}
+{% endblock %}
+
+{% block js %}
+<script src="/static/results.js"></script>
+{% endblock %}

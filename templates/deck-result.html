@@ -1,10 +1,4 @@
-{% extends "deck-form.html" %}
-
 {% set amazon_enabled = AWS_ASSOCIATE_ID and AWS_ACCESS_KEY_ID %}
-
-{% block body_class %}results{% endblock %}
-
-{% block content %}
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">
         <ul class="nav navbar-nav">
@@ -102,8 +96,3 @@
     </div>
 {% endif %}
 </section>
-{% endblock %}
-
-{% block js %}
-<script src="/static/results.js"></script>
-{% endblock %}
