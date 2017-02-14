@@ -1,24 +1,26 @@
 {% set amazon_enabled = AWS_ASSOCIATE_ID and AWS_ACCESS_KEY_ID %}
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">
-        <ul class="nav navbar-nav">
-            <li>
-                <a href="/deckbuilder/">
-                    <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
-                    Price Another Deck
-                </a>
-            </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            {% if amazon_enabled %}
-                <button type="button" class="btn btn-success navbar-btn">
-                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-                    Purchase Deck
-                </button>
-            {% endif %}
-            <p class="navbar-text">Total Cards: <span id="expected-cards">{{ total_cards }}</span></p>
-            <p class="navbar-text">Total Price: $<span id="expected-price">{{ total_cost|currency }}</span></p>
-        </ul>
+        <div class="collapse navbar-collapse in">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="/deckbuilder/">
+                        <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+                        Price Another Deck
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% if amazon_enabled %}
+                    <button type="button" class="btn btn-success navbar-btn">
+                        <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+                        Purchase Deck
+                    </button>
+                {% endif %}
+                <p class="navbar-text text-center">Total Cards: <span id="expected-cards">{{ total_cards }}</span></p>
+                <p class="navbar-text text-center">Total Price: $<span id="expected-price">{{ total_cost|currency }}</span></p>
+            </ul>
+        </div>
     </div>
 </nav>
 <section class="container">

@@ -25,7 +25,6 @@ header .navbar-default .navbar-nav > .active > a:hover {
 }
 
 footer {
-    height: 60px;
     width: 100%;
     color: #fff;
     background-color: #680148;
@@ -93,8 +92,18 @@ footer .container {
     background-color: #E0EFF1;
 }
 
+#home .get-started .btn-cta {
+    margin-top: 15px;
+}
+
 .results {
     padding-bottom: 56px;
+}
+
+@media screen and (max-width: 767px) {
+    .results {
+        padding-bottom: 158px;
+    }
 }
 
 .results .navbar-fixed-bottom .navbar-text {
