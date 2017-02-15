@@ -92,8 +92,10 @@ footer .container {
     background-color: #E0EFF1;
 }
 
-#home .get-started .btn-cta {
-    margin-top: 15px;
+@media screen and (max-width: 767px) {
+    #home .get-started .btn-cta {
+        margin-top: 15px;
+    }
 }
 
 .results {
