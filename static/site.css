@@ -104,7 +104,7 @@ footer .container {
 
 @media screen and (max-width: 767px) {
     .results {
-        padding-bottom: 158px;
+        padding-bottom: 210px;
     }
 }
 
@@ -112,7 +112,7 @@ footer .container {
     font-size: 1.25em;
 }
 
-.results .thumbnail.card > img {
+.results .thumbnail.card img {
     height: 210px;
 }
 

@@ -10,13 +10,23 @@
                     </a>
                 </li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-                {% if amazon_enabled %}
-                    <button type="button" class="btn btn-success navbar-btn">
+            {% if amazon_enabled %}
+                <form method="GET" action="https://www.amazon.com/gp/aws/cart/add.html" target="_blank" class="navbar-form navbar-right">
+                    <input type="hidden" name="AWSAccessKeyId" value="{{ AWS_ACCESS_KEY_ID }}" />
+                    <input type="hidden" name="AssociateTag" value="{{ AWS_ASSOCIATE_ID }}" />
+                    {% for card in results %}
+                        {% if card['asin'] %}
+                            <input type="hidden" name="ASIN.{{ loop.index }}" value="{{ card['asin'] }}" />
+                            <input id="{{ card['id'] }}-cart" type="hidden" name="Quantity.{{ loop.index }}" value="{{ card['quantity'] }}" />
+                        {% endif %}
+                    {% endfor %}
+                    <button type="submit" class="btn btn-success" name="add" value="add">
                         <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
                         Purchase Deck
                     </button>
-                {% endif %}
+                </form>
+            {% endif %}
+            <ul class="nav navbar-nav navbar-right">
                 <p class="navbar-text text-center">Total Cards: <span id="expected-cards">{{ total_cards }}</span></p>
                 <p class="navbar-text text-center">Total Price: $<span id="expected-price">{{ total_cost|currency }}</span></p>
             </ul>
@@ -41,18 +51,30 @@
             <div class="col-xs-6 col-sm-4 col-md-2">
                 <div class="thumbnail card">
                     <strong>{{ card['quantity'] }} x</strong>
+                    {% if amazon_enabled and card['url'] %}
+                        <a href="{{ card['url'] }}" target="_blank" title="View on Amazon.com">
+                    {% endif %}
                     <img src="{{ card['imageUrl'] }}" alt="{{ card['name'] }}"
                         data-toggle="popover"
                         title="{{ card['name'] }}"
                         data-content="{{ card['series'] }} - {{ card['set'] }} #{{ card['number'] }} ({{ card['rarity'] }})"
                         data-placement="top"
                         data-trigger="hover">
+                    {% if amazon_enabled and card['url'] %}
+                        </a>
+                    {% endif %}
                     <div class="caption">
+                        <p>
                         {% if price_found %}
-                            <p>{% if amazon_enabled %}Amazon.com {% endif %}Price: ${{ card['price']|currency }}</p>
+                            {% if amazon_enabled %}
+                                {% if card['url'] %}<a href="{{ card['url'] }}" target="_blank">{% endif %}
+                                    Amazon.com
+                                {% if card['url'] %}</a>{% endif %}
+                            {% endif %}Price: ${{ card['price']|currency }}
                         {% else %}
-                            <p>Price Not Found</p>
+                           Price Not Found
                         {% endif %}
+                        </p>
                         <p>(as of {{ card['timestamp'] }})</p>
                         <form class="form-horizontal">
                             <div class="form-group form-group-sm row">
