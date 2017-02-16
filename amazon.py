@@ -62,7 +62,7 @@ def prioritize_results(name, results):
     return q
 
 
-def get_amazon_info(card):
+def get_amazon_info(card, session=None):
     """Search for card ASIN and link from Amazon's product API."""
 
     AWS_ASSOCIATE_ID = os.environ.get('AWS_ASSOCIATE_ID', '')
@@ -72,6 +72,8 @@ def get_amazon_info(card):
     url = 'http://webservices.amazon.com/onca/xml'
 
     info = {}
+
+    session = session or requests
 
     if AWS_ASSOCIATE_ID and AWS_ACCESS_KEY_ID and AWS_SECRET_KEY:
         title_formats = {
@@ -96,7 +98,7 @@ def get_amazon_info(card):
             'Version': '2013-08-01',
         }
         params = signed_parameters('get', url, params, AWS_SECRET_KEY)
-        response = requests.get(url, params=params)
+        response = session.get(url, params=params)
         matches = parse_search_response(response.text)
         print('{} match(es) for {}'.format(len(matches), title))
         if matches:
