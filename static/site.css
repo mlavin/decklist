@@ -116,6 +116,14 @@ footer .container {
     height: 210px;
 }
 
+.results .thumbnail.card.missing {
+    background: #eee;
+}
+
+.results .thumbnail.card.missing img {
+    opacity: 0.75;
+}
+
 .thumbnail .caption p {
     font-size: 0.75em;
     margin: 0;

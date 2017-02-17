@@ -25,7 +25,7 @@ def signed_parameters(method, url, params, secret):
         query=urllib.parse.urlencode(query, safe='~', quote_via=urllib.parse.quote))
     signature = base64.b64encode(
         hmac.new(secret.encode('utf-8'), text.encode('utf-8'), digestmod=hashlib.sha256).digest())
-    query.append(('Signature', signature))
+    query.append(('Signature', signature.decode('utf-8')))
     return query
 
 
@@ -91,9 +91,9 @@ def get_amazon_info(card, session=None):
             'AssociateTag': AWS_ASSOCIATE_ID,
             'Operation': 'ItemSearch',
             'Keywords': title,
-            # 'BrowseNode': '2522049011',
             'SearchIndex': 'Toys',
             'ResponseGroup': 'Small',
+            'Condition': 'New',
             'Timestamp': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
             'Version': '2013-08-01',
         }
@@ -105,3 +105,57 @@ def get_amazon_info(card, session=None):
             _priority, _order, info = prioritize_results(title, matches).get()
             print(info)
     return info
+
+
+def parse_price_response(response_body):
+    """Parse price response into mapping by ASIN."""
+
+    results = {}
+    batch = etree.fromstring(response_body).findall('{*}Items')
+    for items in batch:
+        for item in items.findall('{*}Item'):
+            asin = item.find('{*}ASIN').text
+            availability = int(item.find('{*}OfferSummary').find('{*}TotalNew').text)
+            price = int(
+                item.find('{*}Offers')
+                .find('{*}Offer')
+                .find('{*}OfferListing')
+                .find('{*}Price')
+                .find('{*}Amount').text) / 100.0
+            results[asin] = {'price': price, 'available': availability}
+    return results
+
+
+async def get_amazon_prices(cards, session=None):
+    """Get prices for all of the cards in the list."""
+
+    AWS_ASSOCIATE_ID = os.environ.get('AWS_ASSOCIATE_ID', '')
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID', '')
+    AWS_SECRET_KEY = os.environ.get('AWS_SECRET_KEY', '')
+
+    url = 'http://webservices.amazon.com/onca/xml'
+
+    asins = [card['asin'] for card in cards if card.get('asin')]
+    results = {}
+
+    if AWS_ASSOCIATE_ID and AWS_ACCESS_KEY_ID and AWS_SECRET_KEY:
+        while asins:
+            current, asins = asins[:20], asins[20:]
+            head, tail = current[:10], current[10:]
+            params = {
+                'Service': 'AWSECommerceService',
+                'AWSAccessKeyId': AWS_ACCESS_KEY_ID,
+                'AssociateTag': AWS_ASSOCIATE_ID,
+                'Operation': 'ItemLookup',
+                'ItemLookup.Shared.ItemType': 'ASIN',
+                'ItemLookup.Shared.ResponseGroup': 'Offers',
+                'ItemLookup.1.ItemId': ','.join(head),
+                'ItemLookup.2.ItemId': ','.join(tail),
+                'Timestamp': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
+                'Version': '2013-08-01',
+            }
+            params = signed_parameters('get', url, params, AWS_SECRET_KEY)
+            async with session.get(url, params=params) as response:
+                text = await response.text()
+                results.update(parse_price_response(text))
+    return results

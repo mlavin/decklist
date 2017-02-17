@@ -49,8 +49,8 @@
         {% for card in results %}
             {% set price_found = card['price'] != 'N/A' %}
             <div class="col-xs-6 col-sm-4 col-md-2">
-                <div class="thumbnail card">
-                    <strong>{{ card['quantity'] }} x</strong>
+                <div class="thumbnail card {% if not price_found %}missing{% endif %}">
+                    <strong>{{ card['quantity'] }}x</strong>
                     {% if amazon_enabled and card['url'] %}
                         <a href="{{ card['url'] }}" target="_blank" title="View on Amazon.com">
                     {% endif %}
@@ -84,6 +84,7 @@
                                         {% if price_found %}
                                             data-quantity="{{ card['quantity'] }}" data-card="{{ card['id'] }}"
                                             data-remaining="{{ card['quantity'] }}"
+                                            data-available="{{ card['available'] }}"
                                         {% else %}
                                             disabled
                                         {% endif %}
