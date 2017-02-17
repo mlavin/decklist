@@ -97,7 +97,7 @@ def get_amazon_info(card, session=None):
             'Keywords': title,
             'SearchIndex': 'Toys',
             'ResponseGroup': 'Small',
-            'Condition': 'New',
+            'Condition': 'All',
             'Timestamp': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
             'Version': '2013-08-01',
         }

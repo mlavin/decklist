@@ -1,5 +1,6 @@
 """Import data from pokemontcg.io and Amazon API."""
 
+import argparse
 import os
 import time
 
@@ -9,22 +10,33 @@ import requests
 from amazon import get_amazon_info
 
 
+parser = argparse.ArgumentParser(description='Import Pokemon Set/Card Info.')
+parser.add_argument('--set-name', action='append', dest='sets', help='One or more set names.')
+parser.add_argument('--card', action='append', dest='cards', help='One or more card numbers.')
+
 def main():
+    args = parser.parse_args()
     client = redis.from_url(url=os.environ.get('REDIS_URL', 'redis://localhost:6379/0'))
     with requests.Session() as session:
         # Fetch all expanded legal sets
-        sets = session.get(
-            url='https://api.pokemontcg.io/v1/sets',
-            params={'expandedLegal': 'true'}).json()
+        names = args.sets
+        if names:
+            params = {'name': ','.join(names)}
+        else:
+            params = {'expandedLegal': 'true'}
+        sets = session.get(url='https://api.pokemontcg.io/v1/sets', params=params).json()
         for info in sets['sets']:
             print('Fetching set: {name}'.format(**info))
             if info['name'] == 'Generations':
                 # Account for the Radiant collection in the total count
                 info['totalCards'] -= 32
             # Get all cards for this set
+            params = {'set': info['name'], 'pageSize': '200'}
+            if args.cards:
+                params['number'] = '|'.join(args.cards)
             cards = session.get(
                 url='https://api.pokemontcg.io/v1/cards',
-                params={'set': info['name'], 'pageSize': '200'}).json()
+                params=params).json()
             for card in cards['cards']:
                 details = {}
                 try:
