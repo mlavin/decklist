@@ -5,6 +5,7 @@ import os
 import queue
 import re
 import time
+import unicodedata
 import urllib.parse
 
 import requests
@@ -85,6 +86,9 @@ def get_amazon_info(card, session=None):
         title = title_formats[card['series']].format(**card)
         # Adjust the names of Mega pokemon
         title = re.sub(r'^(M\s)(.*(-|\s)EX)', 'Mega \g<2>', title)
+        # Remove accents from names
+        title = ''.join(c for c in unicodedata.normalize('NFD', title)
+                        if unicodedata.category(c) != 'Mn')
         params = {
             'Service': 'AWSECommerceService',
             'AWSAccessKeyId': AWS_ACCESS_KEY_ID,

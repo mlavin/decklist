@@ -18,6 +18,9 @@ def main():
             params={'expandedLegal': 'true'}).json()
         for info in sets['sets']:
             print('Fetching set: {name}'.format(**info))
+            if info['name'] == 'Generations':
+                # Account for the Radiant collection in the total count
+                info['totalCards'] -= 32
             # Get all cards for this set
             cards = session.get(
                 url='https://api.pokemontcg.io/v1/cards',
@@ -38,7 +41,7 @@ def main():
                     details[name] = card[name]
                 client.hmset(card['id'], details)
                 # Sleep to prevent rate limits on the API
-                time.sleep(1)
+                time.sleep(0.5)
 
 if __name__ == '__main__':
     main()
