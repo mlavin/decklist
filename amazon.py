@@ -51,11 +51,11 @@ def prioritize_results(name, results):
         title = item.get('title', '')
         priority = 1 - jaro_winkler(name, title)
         if 'REVERSE HOLO' in title.upper():
-            priority += 0.5
+            priority += 0.01
         elif 'HOLO' in title.upper():
-            priority += 1
+            priority += 0.02
         elif 'FULL ART' in title.upper():
-            priority += 1.5
+            priority += 0.03
         elif title.endswith('Jumbo') or title.endswith('Oversized'):
             # Don't consider these cards as matches
             continue
