@@ -77,15 +77,14 @@ def get_amazon_info(card, session=None):
     session = session or requests
 
     if AWS_ASSOCIATE_ID and AWS_ACCESS_KEY_ID and AWS_SECRET_KEY:
+        default_format = 'Pokemon - {name} ({setNumber}) - {set}'
         title_formats = {
             'Black & White': 'Pokemon - {name} ({number}) - {set}',
-            'XY': 'Pokemon - {name} ({setNumber}) - {set}',
-            'Sun & Moon': 'Pokemon - {name} ({setNumber}) - {set}',
         }
         title_formats['BW'] = title_formats['Black & White']
-        title = title_formats[card['series']].format(**card)
+        title = title_formats.get(card['series'], default_format).format(**card)
         # Adjust the names of Mega pokemon
-        title = re.sub(r'^(M\s)(.*(-|\s)EX)', 'Mega \g<2>', title)
+        title = re.sub(r' (M\s)(.*(-|\s)EX)', ' Mega \g<2>', title)
         # Remove accents from names
         title = ''.join(c for c in unicodedata.normalize('NFD', title)
                         if unicodedata.category(c) != 'Mn')

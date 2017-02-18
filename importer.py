@@ -11,6 +11,7 @@ from amazon import get_amazon_info
 
 
 parser = argparse.ArgumentParser(description='Import Pokemon Set/Card Info.')
+parser.add_argument('--standard', action='store_true', dest='standard', help='Only standard sets.')
 parser.add_argument('--set-name', action='append', dest='sets', help='One or more set names.')
 parser.add_argument('--card', action='append', dest='cards', help='One or more card numbers.')
 
@@ -22,6 +23,8 @@ def main():
         names = args.sets
         if names:
             params = {'name': ','.join(names)}
+        elif args.standard:
+            params = {'standardLegal': 'true'}
         else:
             params = {'expandedLegal': 'true'}
         sets = session.get(url='https://api.pokemontcg.io/v1/sets', params=params).json()
