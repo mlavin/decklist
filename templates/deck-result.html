@@ -16,8 +16,8 @@
                     <input type="hidden" name="AssociateTag" value="{{ AWS_ASSOCIATE_ID }}" />
                     {% for card in results %}
                         {% if card['asin'] %}
-                            <input type="hidden" name="ASIN.{{ loop.index }}" value="{{ card['asin'] }}" />
-                            <input id="{{ card['id'] }}-cart" type="hidden" name="Quantity.{{ loop.index }}" value="{{ card['quantity'] }}" />
+                            <input id="{{ card['id'] }}-cart-asin" type="hidden" name="ASIN.{{ loop.index }}" value="{{ card['asin'] }}" />
+                            <input id="{{ card['id'] }}-cart-quantity" type="hidden" name="Quantity.{{ loop.index }}" value="{{ card['quantity'] }}" />
                         {% endif %}
                     {% endfor %}
                     <button type="submit" class="btn btn-success" name="add" value="add">

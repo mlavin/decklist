@@ -15,6 +15,10 @@ $(document).ready(function() {
         // Show new subtotal
         input.data('remaining', remaining);
         subtotalElement.text(subTotal.toFixed(2));
+        // Update cart form
+        $('#' + input.data('card') + '-cart-quantity').val(remaining);
+        $('#' + input.data('card') + '-cart-quantity').prop('disabled', remaining <= 0);
+        $('#' + input.data('card') + '-cart-asin').prop('disabled', remaining <= 0);
         // Update totals
         $('[id$="-subtotal"]').each(function () {
             remainingTotal += parseFloat($(this).text());
@@ -24,6 +28,5 @@ $(document).ready(function() {
         });
         $('#expected-cards').text(remainingCount);
         $('#expected-price').text(remainingTotal.toFixed(2));
-        // TODO: Update cart form
     });
 });
