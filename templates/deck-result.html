@@ -1,6 +1,6 @@
 {% set amazon_enabled = AWS_ASSOCIATE_ID and AWS_ACCESS_KEY_ID %}
 <nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container">
+    <div class="container-fluid">
         <div class="collapse navbar-collapse in">
             <ul class="nav navbar-nav">
                 <li>
@@ -33,22 +33,24 @@
         </div>
     </div>
 </nav>
-<section class="container">
+<section class="container-fluid">
     <div class="row">
-        <div class="col-xs-12 well">
-            {% if amazon_enabled %}Product prices and availability are accurate as of the date/time indicated and are subject to change.
-            Any price and availability information displayed on Amazon.com at the time of purchase
-            will apply to the purchase of this product. This prices do not include shipping.{% else %}
-            The prices shown are based the prices reported by <a href="http://pokeprices.doeiqts.com/">PokePrices</a>
-            as of the timestamp indicated.
-            {% endif %}
-            Use the controls below to adjust the list for cards you already have and don't need to purchase.
+        <div class="col-xs-12">
+            <p class="well">
+                {% if amazon_enabled %}Product prices and availability are accurate as of the date/time indicated and are subject to change.
+                Any price and availability information displayed on Amazon.com at the time of purchase
+                will apply to the purchase of this product. This prices do not include shipping.{% else %}
+                The prices shown are based the prices reported by <a href="http://pokeprices.doeiqts.com/">PokePrices</a>
+                as of the timestamp indicated.
+                {% endif %}
+                Use the controls below to adjust the list for cards you already have and don't need to purchase.
+            </p>
         </div>
     </div>
     <div class="row">
         {% for card in results %}
             {% set price_found = card['price'] != 'N/A' %}
-            <div class="col-xs-6 col-sm-4 col-md-2">
+            <div class="col-xs-6 col-sm-4 col-md-3">
                 <div class="thumbnail card {% if not price_found %}missing{% endif %}">
                     <strong>{{ card['quantity'] }}x</strong>
                     {% if amazon_enabled and card['url'] %}
