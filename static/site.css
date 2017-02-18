@@ -37,6 +37,7 @@ body {
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
+    border-right: solid 1px #ccc;
 }
 
 #sidebar-wrapper::-webkit-scrollbar {
@@ -53,13 +54,11 @@ body {
 }
 
 .sidebar-nav {
-    position: absolute;
     top: 0;
     width: 220px;
     margin: 0;
     padding: 0;
     list-style: none;
-    border-right: solid 1px #ccc;
 }
 
 .sidebar-nav li {
@@ -73,7 +72,6 @@ body {
     display: block;
     color: #777;
     text-decoration: none;
-    padding: 10px 15px 10px 30px;
 }
 
 .sidebar-nav li a:focus,
@@ -90,18 +88,19 @@ body {
     color: #fff;
 }
 
-.sidebar-nav > .sidebar-brand {
+.sidebar-header {
     height: 200px;
     background-color: #fff;
+    padding-top: 55px;
 }
 
-.sidebar-nav > .sidebar-brand a {
+.sidebar-header a {
     padding: 0 5px;
-    margin-top: 55px;
+    display: inline-block;
 }
 
-.sidebar-nav > .sidebar-brand a:hover,
-.sidebar-nav > .sidebar-brand a:focus {
+.sidebar-header a:hover,
+.sidebar-header a:focus {
     background-color: #fff;
 }
 
@@ -187,6 +186,38 @@ body {
 .hamburger.is-open {
     margin-left: -47px;
     z-index: 1001;
+}
+
+@media screen and (max-width: 767px) {
+    #wrapper.toggled {
+        padding-left: 0;
+    }
+
+    #wrapper #sidebar-wrapper,
+    #wrapper.toggled #sidebar-wrapper {
+        width: auto;
+        height: auto;
+        left: 0;
+        margin-left: 0;
+    }
+
+    .sidebar-nav {
+        position: static;
+        width: auto;
+    }
+
+    .sidebar-header {
+        padding: 10px 0;
+        height: 157px;
+    }
+
+    #page-content-wrapper {
+        padding-top: 177px;
+    }
+
+    .hamburger {
+        display: none;
+    }
 }
 
 footer {
@@ -275,6 +306,14 @@ footer a:hover {
 }
 
 @media screen and (max-width: 767px) {
+    #home .header-image .overlay h1 img {
+        display: none;
+    }
+
+    #home #page-content-wrapper {
+        padding-top: 157px;
+    }
+
     #home .get-started .btn-cta {
         margin-top: 15px;
     }
