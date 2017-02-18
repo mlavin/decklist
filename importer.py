@@ -56,7 +56,7 @@ def main():
                     details[name] = card[name]
                 client.hmset(card['id'], details)
                 # Sleep to prevent rate limits on the API
-                time.sleep(0.5)
+                time.sleep(0.8)
 
 if __name__ == '__main__':
     main()
