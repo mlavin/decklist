@@ -14,6 +14,7 @@ parser = argparse.ArgumentParser(description='Import Pokemon Set/Card Info.')
 parser.add_argument('--standard', action='store_true', dest='standard', help='Only standard sets.')
 parser.add_argument('--set-name', action='append', dest='sets', help='One or more set names.')
 parser.add_argument('--card', action='append', dest='cards', help='One or more card numbers.')
+parser.add_argument('--missing', action='store_true', dest='missing', help='Only refetch missing ASINs.')
 
 def main():
     args = parser.parse_args()
@@ -48,15 +49,18 @@ def main():
                 except ValueError:
                     set_number = card['number']
                 card['setNumber'] = set_number
-                # Lookup ASIN from Amazon
-                details.update(get_amazon_info(card, session=session))
+                if args.missing and not client.hget(card['id'], 'asin'):
+                    # Lookup ASIN from Amazon
+                    details.update(get_amazon_info(card, session=session))
+                else:
+                    print('Already have ASIN for {name}'.format(**card))
                 # Copy info from card dict
                 for name in ('id', 'name', 'imageUrl', 'subtype', 'supertype', 'setNumber',
                              'number', 'rarity', 'series', 'set', 'setCode'):
                     details[name] = card[name]
                 client.hmset(card['id'], details)
                 # Sleep to prevent rate limits on the API
-                time.sleep(0.8)
+                time.sleep(0.8 if not args.missing else 0.25)
 
 if __name__ == '__main__':
     main()
