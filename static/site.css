@@ -196,7 +196,7 @@ footer {
     z-index: 1001;
 }
 
-footer .container {
+footer .container-fluid {
     margin: 20px auto;
 }
 
