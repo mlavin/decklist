@@ -34,6 +34,15 @@ footer .container {
     margin: 20px auto;
 }
 
+footer a {
+    color: #fff;
+}
+
+footer a:focus,
+footer a:hover {
+    color: #E0EFF1;
+}
+
 .btn-cta {
     font-size: 1.25em;
     padding: 14px 16px;
