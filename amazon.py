@@ -44,21 +44,23 @@ def parse_search_response(response_body):
     return results
 
 
-def prioritize_results(name, results):
+def prioritize_results(name, card, results):
     """Prioritize regular cards over holo/reverse holos and remove oversized results."""
     q = queue.PriorityQueue()
+    blacklist = ['JUMBO', 'OVERSIZED', 'JAPANESE', 'KOREAN', 'WORLD CHAMPIONSHIP', 'PLAYSET']
     for order, item in enumerate(results):
         title = item.get('title', '')
+        if any(b in title.upper() for b in blacklist):
+            # Don't consider these cards as matches
+            continue
         priority = 1 - jaro_winkler(name, title)
         if 'REVERSE HOLO' in title.upper():
             priority += 0.01
         elif 'HOLO' in title.upper():
-            priority += 0.02
+            if 'HOLO' not in card['rarity'].upper():
+                priority += 0.02
         elif 'FULL ART' in title.upper():
-            priority += 0.03
-        elif title.endswith('Jumbo') or title.endswith('Oversized'):
-            # Don't consider these cards as matches
-            continue
+            priority += 0.02
         q.put((priority, order, item))
     return q
 
@@ -105,8 +107,12 @@ def get_amazon_info(card, session=None):
         matches = parse_search_response(response.text)
         print('{} match(es) for {}'.format(len(matches), title))
         if matches:
-            _priority, _order, info = prioritize_results(title, matches).get()
-            print(info)
+            try:
+                _priority, _order, info = prioritize_results(title, card, matches).get(timeout=0.1)
+            except queue.Empty:
+                print('All matches rejected for {}'.format(title))
+            else:
+                print(info)
     return info
 
 
