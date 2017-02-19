@@ -3,8 +3,25 @@
 {% set nav_decklist = True %}
 {% set is_results = results is defined %}
 {% set body_class = 'results' if is_results else None %}
+{% set title %}Pokémon Deck Price{% if is_results %}: ${{ total_cost|currency }} ({{ total_cards }} cards included){% else %} Calculator{% endif %}{% endset %}
+{% set description %}{% if is_results %}Deck List: {% for card in results[:5] %}{{ card['quantity'] }}x {{ card['name'] }} {{ card['set'] }} #{{ card['number'] }} {% endfor %}...{% else %}Copy/paste a Pokémon Trading Card Game deck list to get the latest prices and purchase it today.{% endif %}{% endset %}
 
-{% block title %}{{ super() }} - Deck Price Calculator{% endblock %}
+{% block title %}{{ title }} - {{ super() }}{% endblock %}
+
+{% block description %}{{ description }}{% endblock %}
+
+{% block meta %}
+    <!-- Twitter Card tags -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@ProfDogwood">
+    <meta name="twitter:title" content="{{ title }}">
+    <meta name="twitter:description" content="{{ description }}">
+    {% if is_results %}
+        {% set first_card = results[0] %}
+        <meta name="twitter:image" content="{{ first_card['imageUrl'] }}">
+        <meta name="twitter:image:alt" content="{{ first_card['name'] }} {{ first_card['set'] }} #{{ first_card['number'] }}">
+    {% endif %}
+{% endblock %}
 
 {% block content %}
     {% if is_results %}

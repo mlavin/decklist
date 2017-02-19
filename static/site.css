@@ -233,6 +233,7 @@ footer .container-fluid {
 
 footer a {
     color: #fff;
+    margin-left: 10px;
 }
 
 footer a:focus,
@@ -356,4 +357,9 @@ footer a:hover {
 
 .thumbnail .caption form .control-label {
     padding-top: 0;
+}
+
+.results .social {
+    padding: 19px 5px 19px 0;
+    display: inline-block;
 }

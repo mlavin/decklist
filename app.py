@@ -61,6 +61,7 @@ async def deck(request):
             'errors': errors,
             'total_cards': total_cards,
             'total_cost': total_cost,
+            'share_url': request.url,
         }
     else:
         return {}

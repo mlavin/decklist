@@ -1,4 +1,5 @@
 {% set amazon_enabled = AWS_ASSOCIATE_ID and AWS_ACCESS_KEY_ID %}
+{% set share_text %}${{ total_cost|currency }} for my new Pokémon Deck{% endset %}
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="collapse navbar-collapse in">
@@ -35,11 +36,22 @@
 </nav>
 <section class="container-fluid">
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-xs-12 col-sm-8">
             <p class="well">
                 Use the controls below to adjust the list for cards you already have and don't need to purchase.
             </p>
         </div>
+        <div class="col-xs-12 col-sm-4">
+            <p class="social">Share This Deck: </p>
+            <a class="btn btn-default" data-window href="https://twitter.com/intent/tweet?url={{ share_url|urlencode }}&amp;text={{ share_text|urlencode }}&amp;&via=ProfDogwood" target="_blank">
+                <i class="socicon-twitter"><span class="sr-only">Twitter</span></i>
+            </a>
+            <a class="btn btn-default" data-window href="https://www.facebook.com/sharer/sharer.php?u={{ share_url|urlencode }}" target="_blank">
+                <i class="socicon-facebook"><span class="sr-only">Facebook</span></i>
+            </a>
+        </div>
+    </div>
+    <div class="row">
         {% for card in results %}
             {% set price_found = card['price'] != 'N/A' %}
             <div class="col-xs-6 col-sm-4 col-md-3">
