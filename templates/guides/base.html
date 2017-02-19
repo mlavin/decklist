@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% set nav_guides = True %}
+
+{% block content %}
+<section class="container-fluid">
+    <div class="row">
+        <div class="col-xs-8">
+            <h2>Getting Started Guide</h2>
+
+            <h3>What is This Site?</h3>
+            <p>Primarily this site is a tool to help you price and purchase deck lists for
+            the Pokémon Trading Card Game. If you don't have a list of your own then this
+            guide can help you put one together or find one online.</p>
+
+            <h3>Where Can I Get a Deck List?</h3>
+            <p>Our <a href="/deckbuilder/">deck price calculator</a> supports lists generated
+            in the export format from <a href="http://www.pokemon.com/us/pokemon-tcg/play-online/">Pokémon TCG Online (PTCGO)</a>.
+            You do not need to own the cards online to add them to a list and export them. Since
+            it's an easy way to generate a list, many players will use this same format when sharing
+            a list on their website, YouTube channel, or forum.</p>
+
+            <p>If you are looking for a deck for competitive play, you can find the lists used by
+            the top 8 Junior, Senior, and Master players at the Regional and Championship
+            tournaments published by <a href="http://www.pokemon.com/us/play-pokemon/pokemon-events/championship-series-event-results/">
+            Play Pokémon</a>. Following the link, you choose a recent event, select a division, and
+            then a player from the dropdown menu. Each list has a "Copy Deck List" button which uses
+            the PTCGO format.</p>
+
+            <h3>How Can I Try a Deck Before Buying It?</h3>
+            <p><a href="http://www.pokemon.com/us/pokemon-tcg/play-online/">Pokémon TCG Online (PTCGO)</a> is an easy
+            and free/cheap way to try out a deck before buying it. To get the cards you need you'll have to earn
+            coins for packs or win tournaments for tradeable packs to trade for the cards you want.
+            To accelerate this process you can also purchase codes to unlock tradeable booster packs online.
+            These are significantly less expensive than the real life booster packs.</p>
+            <p>
+            <a target="_blank"  href="https://www.amazon.com/gp/search/ref=as_li_qf_sp_sr_il?ie=UTF8&tag=professordogw-20&keywords=pokemon card codes&index=aps&camp=1789&creative=9325&linkCode=ur2&linkId=330cc9af0d58092aea883e5f6374e350"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=US&ASIN=B017GVQB4O&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL250_&tag=professordogw-20" ></a><img src="//ir-na.amazon-adsystem.com/e/ir?t=professordogw-20&l=ur2&o=1&camp=1789" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></p>
+            <p>For testing in real life, you can print proxy versions of the cards. While these proxies
+            won't be legal for tournament play, they can be perfect for your play testing.
+            For generating proxies, we recommend <a href="http://proxycroak.com/">Proxycroak</a> which supports
+            the same PTCGO list format.</p>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-8">
+            <h2>Site Issues</h2>
+
+            <h3>Why Didn't My List Work?</h3>
+            <p>The <a href="/deckbuilder/">pricing calculator</a> expects the cards to be listed
+            roughly in the format provided by Pokémon TCG Online (PTCGO). The PTCGO format has each
+            card on its own line and has the format:</p>
+            <blockquote>
+                {quantity} {card name} {set code} {card number}
+            </blockquote>
+            <p>such as "2 Shaymin-EX ROS 77". Since cards from the same name might appear in different
+            sets it's important that the set code is included. Likewise the card number makes it
+            clear exactly which card it is from the set. There have been sets which have multiple
+            cards with the same name such as Mewtwo-EX from Breakthrough (61 and 62)</p>
+
+            <p>
+            <a target="_blank"  href="https://www.amazon.com/gp/offer-listing/B016VKC02S/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B016VKC02S&linkCode=am2&tag=professordogw-20&linkId=456d7319a9e7e0bebc35b0a5c4ff5fd6"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=US&ASIN=B016VKC02S&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL160_&tag=professordogw-20" ></a><img src="//ir-na.amazon-adsystem.com/e/ir?t=professordogw-20&l=am2&o=1&a=B016VKC02S" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+
+            <a target="_blank"  href="https://www.amazon.com/gp/offer-listing/B016VKC0V4/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B016VKC0V4&linkCode=am2&tag=professordogw-20&linkId=b33da1abe5c89460d04c58dc1524f8dc"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=US&ASIN=B016VKC0V4&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL160_&tag=professordogw-20" ></a><img src="//ir-na.amazon-adsystem.com/e/ir?t=professordogw-20&l=am2&o=1&a=B016VKC0V4" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+            </p>
+
+            <h3>Why Is There No Price for Some Cards?</h3>
+            <p>Most of the prices for cards used in competitive play should be available.
+            The prices come from Amazon.com and we've tried our best to match up the cards
+            with their listings and we work constantly to keep them up to date.
+            However, there might be cards which could not be matched
+            to any item available for sale. If you'd like to report a card which wasn't match
+            please drop us an <a href="mailto:info@professordogwood.com">info@professordogwood.com</a>.</p>
+
+            <h3>Why Is This Deck so Expensive?</h3>
+            <p>Ciards come in different rarities. Many popular card have both regular art and full
+            art prints. Some also have secret rare versions which have golden borders. For instance
+            here are the regular art and full art versions of the popular supporter Professor Sycamore.</p>
+
+            <p>
+            <a target="_blank"  href="https://www.amazon.com/gp/offer-listing/B00ICALRM0/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00ICALRM0&linkCode=am2&tag=professordogw-20&linkId=62f07231cdd4f7f85b11ca6cf3e988aa"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=US&ASIN=B00ICALRM0&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL160_&tag=professordogw-20" ></a><img src="//ir-na.amazon-adsystem.com/e/ir?t=professordogw-20&l=am2&o=1&a=B00ICALRM0" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+
+            <a target="_blank"  href="https://www.amazon.com/gp/offer-listing/B01IUAGJDI/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B01IUAGJDI&linkCode=am2&tag=professordogw-20&linkId=d6e06cc40d650115d19772aedb9d5946"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=US&ASIN=B01IUAGJDI&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL160_&tag=professordogw-20" ></a><img src="//ir-na.amazon-adsystem.com/e/ir?t=professordogw-20&l=am2&o=1&a=B01IUAGJDI" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+            </p>
+
+            <p>The full art version can often be more than twice as expensive as the regular art version.
+            For the purpose of competitive play, these are the same card. We're working on ways to
+            identify these and suggest cheaper options but for now that's something that you
+            would need to adjust on your own.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}
