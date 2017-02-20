@@ -22,8 +22,13 @@ async def home(request):
     return {}
 
 
-@aiohttp_jinja2.template('guides/help.html')
-async def guides(request):
+@aiohttp_jinja2.template('help.html')
+async def site_help(request):
+    return {}
+
+
+@aiohttp_jinja2.template('guide.html')
+async def card_guide(request):
     return {}
 
 
@@ -82,7 +87,8 @@ async def decksubmit(request):
 
 def setup_routes(app):
     app.router.add_get('/', home)
-    app.router.add_get('/help/', guides)
+    app.router.add_get('/help/', site_help)
+    app.router.add_get('/card-guide/', card_guide)
     app.router.add_get('/deckbuilder/', deck)
     app.router.add_post('/deckbuilder/', decksubmit)
     app.router.add_static('/static/', path=os.path.join(app['base_dir'], 'static'), name='static')
