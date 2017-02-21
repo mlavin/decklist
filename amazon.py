@@ -125,13 +125,11 @@ def parse_price_response(response_body):
         for item in items.findall('{*}Item'):
             asin = item.find('{*}ASIN').text
             availability = int(item.find('{*}OfferSummary').find('{*}TotalNew').text)
-            price = int(
-                item.find('{*}Offers')
-                .find('{*}Offer')
-                .find('{*}OfferListing')
-                .find('{*}Price')
-                .find('{*}Amount').text) / 100.0
-            results[asin] = {'price': price, 'available': availability}
+            offer = item.find('{*}Offers').find('{*}Offer')
+            if offer is not None:
+                price = int(offer.find('{*}OfferListing').find('{*}Price').find('{*}Amount').text)
+                price = price / 100.00
+                results[asin] = {'price': price, 'available': availability}
     return results
 
 
