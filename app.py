@@ -88,7 +88,7 @@ async def decksubmit(request):
 def setup_routes(app):
     app.router.add_get('/', home)
     app.router.add_get('/help/', site_help)
-    app.router.add_get('/card-guide/', card_guide)
+    # app.router.add_get('/card-guide/', card_guide)
     app.router.add_get('/deckbuilder/', deck)
     app.router.add_post('/deckbuilder/', decksubmit)
     app.router.add_static('/static/', path=os.path.join(app['base_dir'], 'static'), name='static')
@@ -96,6 +96,35 @@ def setup_routes(app):
 
 def format_currency(value):
     return "{:,.2f}".format(value)
+
+
+@jinja2.environmentfilter
+def format_affiliate_link(environ, asin, text=''):
+    tag = environ.globals.get('AWS_ASSOCIATE_ID', '')
+    href = urllib.parse.urljoin('https://www.amazon.com/gp/offer-listing/', asin + '/')
+    href += '?{}'.format(urllib.parse.urlencode({'tag': tag}))
+    if not text:
+        src = '//ws-na.amazon-adsystem.com/widgets/q?' + urllib.parse.urlencode({
+            '_encoding': 'UTF8',
+            'MarketPlace': 'US',
+            'ASIN': asin,
+            'ServiceVersion': '20070822',
+            'ID': 'AsinImage',
+            'WS': '1',
+            'Format': '_SL160_',
+            'tag': tag,
+        })
+        text = '<img border="0" src="{src}" >'.format(src=src)
+    pixel_src = '//ir-na.amazon-adsystem.com/e/ir?' + urllib.parse.urlencode({
+        't': tag,
+        'l': 'am2',
+        'o': '1',
+        'a': asin
+    })
+    pixel = ('<img src="{src}" width="1" height="1" border="0" alt=""' +
+             'style="border:none !important; margin:0px !important;" />').format(src=pixel_src)
+    return jinja2.Markup('<a target="_blank" rel="noopener" href="{href}">{text}</a>{pixel}'.format(
+        href=href, text=text, pixel=pixel))
 
 
 if __name__ == '__main__':
@@ -113,4 +142,5 @@ if __name__ == '__main__':
     env.globals['AWS_ASSOCIATE_ID'] = app['AWS_ASSOCIATE_ID']
     env.globals['AWS_ACCESS_KEY_ID'] = app['AWS_ACCESS_KEY_ID']
     env.filters['currency'] = format_currency
+    env.filters['affiliate_link'] = format_affiliate_link
     web.run_app(app, port=int(os.environ.get('PORT', '8080')))

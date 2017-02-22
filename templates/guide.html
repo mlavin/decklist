@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% set nav_guide = True %}
+
+{% block title %}Card and Deck Building Guide - {{ super() }}{% endblock %}
+
+{% block description %}Guide for understanding the different types of cards in the Pokémon Trading Card Game and how they work together to make a deck.{% endblock %}
+
+{% block content %}
+<section class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8">
+            <h2>Card and Deck Guide</h2>
+
+            <h3>Overview</h3>
+            <p>Decks for the Pokémon Trading Card Game are made of 60 cards in total. These cards
+            are a mixture of different types of cards including Pokémon, Trainer (Supporter, Item,
+            Tool, Stadium), and Energy cards. Roughly these break down into 12-20 Pokémon,
+            25-35 Trainers, and 8-15 Energy. These ranges vary depending on the overall strategy
+            of the deck and some decks may require cards outside of these general ranges. It should
+            be noted that other than basic energy, you cannot have more than four of the same card
+            with the same name in a deck.</p>
+
+            <h3>Formats</h3>
+            <p>Competitive Pokémon play is broken into two formats which dictate the set of
+            cards which are allowable for play. These formats are Standard which includes
+            the cards from Primal Clash (released Feb 2015) through the Sun and Moon base set
+            (released Feb 2017) and Expanded which includes the cards from the Black and White
+            base set (released April 2011) through the Sun and Moon base set (released Feb 2017).
+            These formats rotate each September, dropping 3-5 of the oldest sets.
+            Cards from older sets which have since been reprinted in legal set are still legal
+            for play in that format as long as the wording on the card has not changed.</p>
+
+            <p>For example, the popular supporter N has been reprinted a number of times. While
+            the original sets Noble Victories (released Nov 2011) and Dark Explorers (released May 2012)
+            are no longer legal in Standard play, you can play those prints of N because they
+            have the same wording at N when it was reprinted in Fates Collide (released May 2016)
+            which is still legal in Standard.<p>
+
+            <p>{{ 'B006OR8BU4'|affiliate_link }} {{ 'B0081UG3RA'|affiliate_link }} {{ 'B01EU44SKO'|affiliate_link }}</p>
+
+            <p>For casual play, you may not care about whether cards are legal for tournament play,
+            but it's worth keeping in mind that these cards are printed together and rotated to balance the
+            game. It's also worth knowing that there might be other prints of the same card which
+            could be cheaper or easier to find. This guide is written using examples from the
+            Standard format but the principles apply to all formats. With larger formats such as
+            Expanded there are more cards to choose from and more options for filling the roles
+            needed to build a balanced and consitent deck.</p>
+
+            <h3>Deck Strategy and Consistency</h3>
+            <p>Decks are built around a particular strategy (or strategies) which will allow the
+            player to win the game whether that is by taking their six prizes first or by discarding
+            all of their oppenent's cards so that they cannot continue the game. Some decks do this
+            through big, aggressive attacks which knock out most other Pokémon in a single hit. Other
+            decks plan to consistently hit for two-hit knockouts. Some decks try to stop opponent's
+            attacks from dealing much sometimes even any damage. Others try to deny their opponent
+            any energy so they simply cannot attack. Whatever it is, a deck should have a clear
+            strategy and the cards included in the deck should work to compliment that goal.
+            Any card game involves a bit of randomness so decks are called consstent when they
+            can effectively work towards their strategy regardless of the randomness of the
+            draw.</p>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-8">
+            <h2>Cards Roles</h2>
+
+            <h3>Attackers</h3>
+            <p>Attacking with your Pokémon to knock out your opponent's Pokémon to take your
+            six prizes is the most common way to win the game so it shouldn't be surprising
+            that most decks are built around a single attacking Pokémon or a few complimentary
+            Pokémon. Once you've identified a primary and secondary attacker in your deck,
+            you can build the rest of your deck around supporting getting those Pokémon ready
+            to attack. The types of cards you'll need with depend on the amount and type
+            of energy required, the evolution stage of your attackers (basic, stage 1, stage 2,
+            BREAK, Mega).</p>
+
+            <h3>Supporting Pokémon</h3>
+            <p></p>
+
+            <h3>Deck Search</h3>
+            <p></p>
+
+            <h3>Draw Support</h3>
+            <p></p>
+
+            <h3>Energy Acceleration</h3>
+            <p></p>
+
+            <h3>Healing</h3>
+            <p></p>
+
+            <h3>Recycle</h3>
+            <p></p>
+
+            <h3>Disruption</h3>
+            <p></p>
+
+            <h3>Switching</h3>
+            <p></p>
+
+            <h3>Stadiums</h3>
+            <p></p>
+        </div>
+    </div>
+</section>
+{% endblock %}
