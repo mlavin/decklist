@@ -22,12 +22,13 @@ def main():
     with requests.Session() as session:
         # Fetch all expanded legal sets
         names = args.sets
+        params = {}
         if names:
-            params = {'name': ','.join(names)}
-        elif args.standard:
-            params = {'standardLegal': 'true'}
+            params['name'] = ','.join(names)
+        if args.standard:
+            params['standardLegal'] = 'true'
         else:
-            params = {'expandedLegal': 'true'}
+            params['expandedLegal'] = 'true'
         sets = session.get(url='https://api.pokemontcg.io/v1/sets', params=params).json()
         for info in sets['sets']:
             print('Fetching set: {name}'.format(**info))
@@ -49,7 +50,7 @@ def main():
                 except ValueError:
                     set_number = card['number']
                 card['setNumber'] = set_number
-                if args.missing and not client.hget(card['id'], 'asin'):
+                if not client.hget(card['id'], 'asin') or not args.missing:
                     # Lookup ASIN from Amazon
                     details.update(get_amazon_info(card, session=session))
                 else:
