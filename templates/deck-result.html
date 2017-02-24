@@ -54,11 +54,12 @@
     <div class="row">
         {% for card in results %}
             {% set price_found = card['price'] != 'N/A' %}
+            {% set card_url = amazon_enabled and card['asin'] and card['asin']|affiliate_url %}
             <div class="col-xs-6 col-sm-4 col-md-3">
                 <div class="thumbnail card {% if not price_found %}missing{% endif %}">
                     <strong>{{ card['quantity'] }}x</strong>
-                    {% if amazon_enabled and card['url'] %}
-                        <a href="{{ card['url'] }}" target="_blank" title="View on Amazon.com">
+                    {% if card_url %}
+                        <a href="{{ card_url }}" target="_blank" title="View on Amazon.com" rel="noopener">
                     {% endif %}
                     <img src="{{ card['imageUrl'] }}" alt="{{ card['name'] }}"
                         data-toggle="popover"
@@ -66,16 +67,14 @@
                         data-content="{{ card['series'] }} - {{ card['set'] }} #{{ card['number'] }} ({{ card['rarity'] }})"
                         data-placement="top"
                         data-trigger="hover">
-                    {% if amazon_enabled and card['url'] %}
+                    {% if card_url %}
                         </a>
                     {% endif %}
                     <div class="caption">
                         <p>
                         {% if price_found %}
-                            {% if amazon_enabled %}
-                                {% if card['url'] %}<a href="{{ card['url'] }}" target="_blank">{% endif %}
-                                    Amazon.com
-                                {% if card['url'] %}</a>{% endif %}
+                            {% if card_url %}
+                                <a href="{{ card_url }}" target="_blank" rel="noopener">Amazon.com</a>
                             {% endif %}Price: ${{ card['price']|currency }}
                         {% else %}
                            Price Not Found

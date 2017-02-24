@@ -99,10 +99,23 @@ def format_currency(value):
 
 
 @jinja2.environmentfilter
-def format_affiliate_link(environ, asin, text=''):
+def format_affiliate_url(environ, asin, page='offer'):
+    """Get the affiliate URL for an item offer or detail page."""
+
+    url = {
+        'offer': 'https://www.amazon.com/gp/offer-listing/{}/',
+        'detail': 'https://www.amazon.com/dp/{}/'
+    }[page].format(asin)
     tag = environ.globals.get('AWS_ASSOCIATE_ID', '')
-    href = urllib.parse.urljoin('https://www.amazon.com/gp/offer-listing/', asin + '/')
-    href += '?{}'.format(urllib.parse.urlencode({'tag': tag}))
+    return '{}?{}'.format(url, urllib.parse.urlencode({'tag': tag}))
+
+
+@jinja2.environmentfilter
+def format_affiliate_link(environ, asin, text='', page='offer'):
+    """Build an affiliate link as text or with an image."""
+
+    tag = environ.globals.get('AWS_ASSOCIATE_ID', '')
+    url = format_affiliate_url(environ, asin, page=page)
     if not text:
         src = '//ws-na.amazon-adsystem.com/widgets/q?' + urllib.parse.urlencode({
             '_encoding': 'UTF8',
@@ -124,7 +137,7 @@ def format_affiliate_link(environ, asin, text=''):
     pixel = ('<img src="{src}" width="1" height="1" border="0" alt=""' +
              'style="border:none !important; margin:0px !important;" />').format(src=pixel_src)
     return jinja2.Markup('<a target="_blank" rel="noopener" href="{href}">{text}</a>{pixel}'.format(
-        href=href, text=text, pixel=pixel))
+        href=url, text=text, pixel=pixel))
 
 
 if __name__ == '__main__':
@@ -143,4 +156,5 @@ if __name__ == '__main__':
     env.globals['AWS_ACCESS_KEY_ID'] = app['AWS_ACCESS_KEY_ID']
     env.filters['currency'] = format_currency
     env.filters['affiliate_link'] = format_affiliate_link
+    env.filters['affiliate_url'] = format_affiliate_url
     web.run_app(app, port=int(os.environ.get('PORT', '8080')))
