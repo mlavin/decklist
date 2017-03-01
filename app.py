@@ -27,9 +27,15 @@ async def site_help(request):
     return {}
 
 
-@aiohttp_jinja2.template('guide.html')
 async def card_guide(request):
-    return {}
+    context = {}
+    name = request.match_info.get('name', 'overview')
+    if name not in ('overview', 'attacking-pokemon', 'supporting-pokemon', 'deck-search',
+                    'energy-acceleration', 'healing', 'recycle', 'disruption',
+                    'switching', 'stadiums'):
+        raise web.HTTPNotFound()
+    template_name = 'guides/{}.html'.format(name)
+    return aiohttp_jinja2.render_template(template_name, request, context)
 
 
 @aiohttp_jinja2.template('deck.html')
@@ -88,7 +94,8 @@ async def decksubmit(request):
 def setup_routes(app):
     app.router.add_get('/', home)
     app.router.add_get('/help/', site_help)
-    # app.router.add_get('/card-guide/', card_guide)
+    app.router.add_get('/guides/', card_guide)
+    app.router.add_get('/guides/{name}/', card_guide)
     app.router.add_get('/deckbuilder/', deck)
     app.router.add_post('/deckbuilder/', decksubmit)
     app.router.add_static('/static/', path=os.path.join(app['base_dir'], 'static'), name='static')

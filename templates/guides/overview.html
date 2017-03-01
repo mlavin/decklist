@@ -1,0 +1,153 @@
+{% extends "guides/base.html" %}
+
+{% block content %}
+<section class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8">
+            <h2>Card and Deck Guide</h2>
+
+            <h3>Overview</h3>
+            <p>Decks for the Pokémon Trading Card Game are made of 60 cards in total. These cards
+            are a mixture of different types of cards including Pokémon, Trainer (Supporter, Item,
+            Tool, Stadium), and Energy cards. Roughly these break down into 12-20 Pokémon,
+            25-35 Trainers, and 8-15 Energy. These ranges vary depending on the overall strategy
+            of the deck and some decks may require cards outside of these general ranges. It should
+            be noted that other than basic energy, you cannot have more than four of the same card
+            with the same name in a deck.</p>
+
+            <h3>Formats</h3>
+            <p>Competitive Pokémon play is broken into two formats which dictate the set of
+            cards which are allowable for play. These formats are Standard which includes
+            the cards from Primal Clash (released Feb 2015) through the Sun and Moon base set
+            (released Feb 2017) and Expanded which includes the cards from the Black and White
+            base set (released April 2011) through the Sun and Moon base set (released Feb 2017).
+            These formats rotate each September, dropping 3-5 of the oldest sets.
+            Cards from older sets which have since been reprinted in legal set are still legal
+            for play in that format as long as the wording on the card has not changed.</p>
+
+            <p>For example, the popular supporter N has been reprinted a number of times. While
+            the original sets Noble Victories (released Nov 2011) and Dark Explorers (released May 2012)
+            are no longer legal in Standard play, you can play those prints of N because they
+            have the same wording at N when it was reprinted in Fates Collide (released May 2016)
+            which is still legal in Standard.<p>
+
+            <p>{{ 'B006OR8BU4'|affiliate_link }} {{ 'B0081UG3RA'|affiliate_link }} {{ 'B01EU44SKO'|affiliate_link }}</p>
+
+            <p>For casual play, you may not care about whether cards are legal for tournament play,
+            but it's worth keeping in mind that these cards are printed together and rotated to balance the
+            game. It's also worth knowing that there might be other prints of the same card which
+            could be cheaper or easier to find. This guide is written using examples from the
+            Standard format but the principles apply to all formats. With larger formats such as
+            Expanded there are more cards to choose from and more options for filling the roles
+            needed to build a balanced and consitent deck.</p>
+
+            <h3>Deck Strategy and Consistency</h3>
+            <p>Decks are built around a particular strategy (or strategies) which will allow the
+            player to win the game whether that is by taking their six prizes first or by discarding
+            all of their oppenent's cards so that they cannot continue the game. Some decks do this
+            through big, aggressive attacks which knock out most other Pokémon in a single hit. Other
+            decks plan to consistently hit for two-hit knockouts. Some decks try to stop opponent's
+            attacks from dealing much sometimes even any damage. Others try to deny their opponent
+            any energy so they simply cannot attack. Whatever it is, a deck should have a clear
+            strategy and the cards included in the deck should work to compliment that goal.
+            Any card game involves a bit of randomness so decks are called consistent when they
+            can effectively work towards their strategy regardless of the randomness of the
+            draw.</p>
+
+            <h3>Deck Space</h3>
+            <p>When you see a list of sixty cards which make up a deck it's important to understand
+            that many of the cards can be flexible in how many are used or used at all. When you
+            understand the role of certain cards in a deck you can better understand which cards
+            might be reduced or removed and other cards that might take their place to fill a
+            similar role or trade off for cost or work better in certain match-ups. When
+            people talk about making "space" in a list, they mean deciding which cards to remove
+            to put in another card they want. In the end there is rarely a perfect list and as
+            new cards come out there are more choices and trade-offs to make.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-8">
+            <h2>Cards Roles</h2>
+            <p>The purpose of each card in a deck roughly fits into one of the below
+            categories. Read on for each role guide to find out more and see some of
+            the most common cards used for these roles.</p>
+
+            <h3>Attackers</h3>
+            <p>Attacking with your Pokémon to knock out your opponent's Pokémon to take your
+            six prizes is the most common way to win the game so it shouldn't be surprising
+            that most decks are built around a single attacking Pokémon or a few complimentary
+            Pokémon. Read our <a href="">attacking Pokémon guide</a> to find our more about
+            what makes a good choice for an attacking Pokémon.</p>
+            <!-- Once you've identified a primary and secondary attacker in your deck, -->
+            <!-- you can build the rest of your deck around supporting getting those Pokémon ready -->
+            <!-- to attack. The types of cards you'll need with depend on the amount and type -->
+            <!-- of energy required, the evolution stage of your attackers (basic, stage 1, stage 2, -->
+            <!-- BREAK, Mega).</p> -->
+
+            <h3>Supporting Pokémon</h3>
+            <p>Many decks include Pokémon only for their abilities rather than their attacks.
+            These abilities can be used to either help with one of the other roles such
+            as energy acceleration, draw support, or disruption. The <a href="">supporting Pokémon guide</a>
+            goes through common supporting cards which can fit into your deck.</p>
+
+            <h3>Deck Search</h3>
+            <p>To get over the randomness of the draw, decks need to contain cards which help
+            for exactly what you need. That might include searching for Pokémon, energy, items,
+            supporters, or stadiums. Sometimes these cards require discarding something that you
+            have for something that you need but that will be worth it to get the right card
+            for the right situation. The <a href="">deck search</a> guide will breakdown some
+            of the best cards for finding things in your deck.</p>
+
+            <h3>Draw Support</h3>
+            <p>Your deck is sixty cards and starting with seven you draw one per turn. That will take
+            a lot of turns to get through most of your cards. Each with cards to search out
+            one or two that you might need, there are many times to need more. <a href="">Draw support</a>
+            cards help you get you get a fresh new hand and get your deck setup.</p>
+
+            <h3>Energy Acceleration</h3>
+            <p>The rules only allow for attaching one engery per turn. To use attacks costing
+            more than one energy quickly or to power up a second attacker on the bench, most
+            decks need some form of <a href="">energy acceleration</a>.</p>
+
+            <h3>Healing</h3>
+            <p>Healing can be more of a nice to have than a requiement in most desks. At the same
+            time, a well timed heal on your main attacker can cause your oppentent to need an
+            additional turn to get the knockout. If you can use that extra turn to take a knockout
+            of your own or setup your next attack, it could swing the game in your favor. The
+            <a href="">healing guide</a> goes through the best cards for healing your damaged
+            Pokémon.</p>
+
+            <h3>Recycle</h3>
+            <p>You'll worry less about discarding cards early in the game if you know you have
+            a way to recover them later if needed. Whether it's energy, Pokémon, or trainer cards,
+            it helps decks to have the ability to use the same card more than once in a game.
+            Having some amount of <a href="">recycle</a> in a deck can sometimes be the difference
+            between winning and decking out.</p>
+
+            <h3>Disruption</h3>
+            <p>You have your plan and your opponent has theirs. While you are playing cards
+            to help setup your own gameplan, it can help to play some cards to disrupt your
+            opponent as well. That might mean discarding their energy or changing their active Pokémon.
+            Particularly if you need more time to get setup, buying an extra turn might just be
+            what your deck is missing. In fact some decks are built entirely around
+            <a href="">disruption</a></p>
+
+            <h3>Switching</h3>
+            <p>With the inclusion of your supporting Pokémon, you might not always start
+            the Pokémon that you want. In other situations, your oppenent might change your
+            active Pokémon. Since energy is a precious resource in the game you don't
+            want to pay retreat if you don't have to so having a plan on switching your
+            Pokémon is needed in every deck. There are items to help with switching
+            as well as tools, stadiums, and other Pokémon and you might want a mix
+            of these <a href="">switching cards</a> for different situations.</p>
+
+            <h3>Stadiums</h3>
+            <p><a href="">Stadiums</a> can fit into one of the previous roles or can work to
+            boost your deck strategy in other ways. Most decks want to include a stadium
+            or two if for no other reason than to discard their opponents stadium and
+            to disrupt their strategy.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}
