@@ -1,0 +1,166 @@
+{% extends "guides/base.html" %}
+
+{% block title %}Supporting Pokémon - {{ super() }}{% endblock %}
+
+{% block description %}Guide for selecting supporting Pokémon for your deck.{% endblock %}
+
+{% block content %}
+<section class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8">
+            <h2>Supporting Pokémon Guide</h2>
+
+            <h3>Overview</h3>
+            <p>Once you've identified the main <a href="/guides/attacking-pokemon/">attacking Pokémon</a>
+            for your deck, you'll want to consider additional supporting Pokémon to help
+            you as backup attackers, for drawing more cards, or to disrupt your opponent.
+            You don't want to overload your deck with these cards since you'll make it
+            harder to find main attackers and you'll run out of bench space but
+            many of these Pokémon can be used in a number of decks. Remember
+            that any of the basic Pokémon you include could end up being your
+            starting Pokémon you must consider the retreat cost and play switching
+            cards to get out of bad starts since you don't want to attack with
+            most of these cards.</p>
+
+            <h3>Draw Support</h3>
+            <p>{{ 'B00WTGHDGW'|affiliate_link('Shaymin-EX (Roaring Skies)', page='detail') }} is by
+            far the most popular supporting Pokémon and many decks play two or more. It's
+            "Setup" ability allows you to draw to six cards in your hand when it's played
+            to the bench. It has a single retreat cost which isn't bad and it's attack
+            brings the card back into your hand and takes it out of harms way. Its
+            biggest downside is that it only has 110 HP which is very low for an EX
+            Pokémon and it gives up two prizes when knocked out. For most the
+            upside of this card far out weighs the downside which makes it one
+            of the most popular and therefore expensive cards in the game.</p>
+
+            {{ display_examples([('B00WTGHDGW', 'Shaymin-EX'), ('B00WTGHB28', 'Shaymin-EX (FA)'), ]) }}
+
+            <p>For deck with a heavy EX Pokémon focus, {{ 'B017AHK5O6'|affiliate_link('Hoopa-EX', page='detail') }}
+            is often included for its "Scoundrel Ring" ability to search out three more EX
+            Pokémon and bring them into your hand. A first turn Hoopa-EX for two
+            EX attackers and a Shaymin-EX can setup your bench quickly. Unlike
+            Shaymin-EX, Hoopa-EX doesn't really have a useable attack and it also
+            has a two retreat cost. It has 170 HP so it's harder to knockout but
+            it still gives up two prizes. Again the fast setup makes it worth it
+            and one is usually included in an EX focused deck. Thankfully it was
+            included in a promo tin as well as in Ancient Origins so it's easy
+            to find and not very expensive.</p>
+
+            {{ display_examples([('B017AHK5O6', 'Hoopa-EX Promo'), ('B0128VEA9K', 'Hoopa-EX'), ('B0128VCTAM', 'Hoopa-EX (FA)'), ]) }}
+
+            <p>While Shaymin and Hoopa are great for an early game setup,
+            {{ 'B016VKAYHQ'|affiliate_link('Octillery (BREAKthrough)', page='detail') }}
+            and {{ 'B06WV7KNM8'|affiliate_link('Oranguru (Sun &amp; Moon)', page='detail') }}
+            can be useful latter in the game to keep your hand size strong.
+            Octillery's "Abyssal Hand" let's you draw until you have five cards
+            and similarly Oranguru's "Instruct" let's you draw until you have three.
+            Both of these can be used once during your turn. Both have two
+            retreat cost so you'll probably want to attach a {{ 'B016VKBXIU'|affiliate_link('Float Stone', page='detail') }}
+            to them. Octillery's ability is clearly stronger but it's a stage one so it's not as easy to setup
+            and requires including two cards in your deck instead of just one.
+            Neither of these cards is an ultra-rare so they can be a great fit
+            into many decks regardless of budget. Either of these cards can
+            bail you out of a late game N.</p>
+
+            {{ display_examples([('B016VKAX9K', 'Remoraid'), ('B016VKAYHQ', 'Octillery'), ('B06WV7KNM8', 'Organguru'), ]) }}
+
+            <h3>Backup Attackers</h3>
+            <p>Many decks can benefit by having one or two copies of a back up
+            attacket. This might be to help with a particular match up because
+            of type coverage (weakness) or because of the play style. Decks which
+            already play {{ 'B01M34NW7C'|affiliate_link('Double Colorless Energy', page='detail') }}
+            can play attackers like {{ 'B01NAXAIYK'|affiliate_link('Tauros GX (Sun &amp; Moon)', page='detail') }}
+            to stall out decks which can't knock it out with a OHKO or
+            {{ 'B0128VEM48'|affiliate_link('Lugia-EX (Ancient Origins)', page='detail') }}
+            to counter decks which need to commit a lot of energy to attack with Aero Ball.</p>
+
+            {{ display_examples([('B01NAXAIYK', 'Tauros GX'), ('B0128VEM48', 'Lugia-EX'), ]) }}
+
+            <h3>Attack Support</h3>
+            <p>Fighting types can take advantage of
+            {{ 'B01EU47CP2'|affiliate_link('Regirock-EX (Fates Collide)', page='detail') }}
+            ability which boosts attacks by 10 damage.
+            While you won't attack with them, the
+            {{ 'B0128VC6KK'|affiliate_link('Jolteon', page='detail') }},
+            {{ 'B0128VBRE6'|affiliate_link('Vaporeon', page='detail') }}, and
+            {{ 'B0128VA8EQ'|affiliate_link('Flareon', page='detail') }} from Ancient Origins
+            can boost the power of your main attacking stage one Pokémon by
+            giving it an additional lightning, water, or fire type.</p>
+
+            {{ display_examples([('B01EU47CP2', 'Regirock-EX'), ('B0128VC6KK', 'Jolteon'),
+                ('B0128VBRE6', 'Vaporeon'), ('B0128VA8EQ', 'Flareon'), ]) }}
+
+            <p>When used on a stage one Pokémon like
+            {{ 'B0128V9RCK'|affiliate_link('Vespiquen (Ancient Origins)', page='detail') }},
+            {{ 'B01MYCHJLY'|affiliate_link('Lurantis GX (Sun &amp; Moon)', page='detail') }},
+            {{ 'B01N157XUG'|affiliate_link('Umbreon GX (Sun &amp; Moon)', page='detail') }}, or
+            {{ 'B01N7WH1F2'|affiliate_link('Espeon GX (Sun &amp; Moon)', page='detail') }} it means you
+            can attack for double damage weakness on a large percent of opposing
+            attackers.</p>
+
+            {{ display_examples([('B0128V9RCK', 'Vespiquen'), ('B01MYCHJLY', 'Lurantis'),
+                ('B01N157XUG', 'Umbreon'), ('B01N7WH1F2', 'Espeon'), ]) }}
+
+            <h3>Disruption</h3>
+            <p>As you can see many of these supporting Pokémon rely on abilities
+            so shutting off abilities can really hurt your opponent's strategy.
+            {{ 'B01B3LFZDG'|affiliate_link('Garbodor (BREAKPoint)', page='detail') }}
+            has the ability "Garbotoxin" which shuts off all other abilities when
+            it has a tool attached. Because of the three retreat cost,
+            {{ 'B016VKBXIU'|affiliate_link('Float Stone', page='detail') }} is an ideal choice.
+            Since it's a stage one, that means it can't be used to stop the abilities
+            of Shaymin-EX or Hoopa-EX at least on the first turn of the game.
+            {{ 'B06W2G8SY7'|affiliate_link('Alolan Muk (Sun &amp; Moon)', page='detail') }}
+            has a similar ability which only stops abilities of basic Pokémon
+            but doesn't require a tool attached. It's still a stage one and since
+            if has four retreat you probably would still want a Float Stone attached.
+            {{ 'B06WWBGR18'|affiliate_link('Giratina (XY184)', page='detail') }} is
+            a basic which stops the abilities of any BREAK Pokémon which could
+            be a hard counter to Greninja BREAK but otherwise isn't generally useful.</p>
+
+            {{ display_examples([('B01B3LFZDG', 'Garbodor'), ('B06W2G8SY7', 'Muk'), ('B06WWBGR18', 'Giratina'), ]) }}
+
+            <p>Not all Pokémon have abilities but every deck needs item cards.
+            {{ 'B0128V8WDK'|affiliate_link('Vileplume (Ancient Origins)', page='detail') }}
+            has the "Irritating Pollen" ability which prevents both players from
+            playing any item cards which includes tools. While that does stop
+            you from playing items that just means you won't put very many items
+            in your deck to be prepared. With
+            {{ 'B0128VB5X4'|affiliate_link('Forest of Giant Plants (Ancient Origins)', page='detail') }}
+            in play it's possible to setup a Vileplume on your first turn even though
+            it's a stage two. Preventing your opponent from play any item cards
+            the entire game is such as strong lock it can win games even if
+            you aren't doing much damage simply because your opponent can never
+            get setup.</p>
+
+            {{ display_examples([('B0128V8MSU', 'Oddish'), ('B0128V8R3A', 'Gloom'),
+                ('B0128V8WDK', 'Vileplume'), ('B0128VB5X4', 'Forest of Giant Plants'), ])}}
+
+            <p>There are a few Pokémon with utility attacks which can be included
+            as a one-off in a number of different decks to help with certain matchups.
+            These should only be included if you feel you can afford the space and
+            they should only be benched if they are needed in the match up for the
+            game. {{ 'B01AWTP2B0'|affiliate_link('Jirachi (XY67)', page='detail') }}
+            has the first attack "Stardust" which can discard special energy attached
+            to your opponent's Pokémon and then cannot be damaged the next turn.
+            Since the attack is a single colorless, has a single retreat, and only
+            gives up a single prize card, this can be used in a number of decks to
+            slow down opponents that rely on special energy like Double Colorless Energy.
+            For decks which would be very hurt by Garbodor shutting off abilities,
+            {{ 'B01MG2GQM9'|affiliate_link('Beedrill-EX (XY157)', page='detail') }}
+            has the "Double Scrapper" attack which is one of the only ways to
+            remove tools like Float Stone.</p>
+
+            {{ display_examples([('B01AWTP2B0', 'Jirachi'), ('B01MG2GQM9', 'Beedrill-EX'), ]) }}
+
+            <h3>Summary</h3>
+            <p>There is a huge variety of Pokémon with abilities which can help
+            support your deck strategy. You shouldn't go crazy and try to add
+            too many of these, particularly the non-basics, because it will slow
+            down you main deck strategy. However, finding the right balance of
+            these supporting cards can help you draw better, hit harder, and throw
+            you opponent off balance.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

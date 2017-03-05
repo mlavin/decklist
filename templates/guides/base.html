@@ -4,7 +4,7 @@
     <div class="row">
         {% for asin, _name in examples %}
             <div class="col-xs-6 col-sm-4 col-md-3 text-center">
-                {{ asin|affiliate_link() }}
+                {{ asin|affiliate_link(page='detail') }}
             </div>
         {% endfor %}
     </div>
