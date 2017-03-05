@@ -288,6 +288,10 @@ footer a:hover {
     color: #ccc;
 }
 
+a.affiliate > img {
+    padding: 5px;
+}
+
 #home .hamburger.is-closed .hamb-top,
 #home .hamburger.is-closed .hamb-middle,
 #home .hamburger.is-closed .hamb-bottom {

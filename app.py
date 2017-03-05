@@ -143,7 +143,7 @@ def format_affiliate_link(environ, asin, text='', page='offer'):
     })
     pixel = ('<img src="{src}" width="1" height="1" border="0" alt=""' +
              'style="border:none !important; margin:0px !important;" />').format(src=pixel_src)
-    return jinja2.Markup('<a target="_blank" rel="noopener" href="{href}">{text}</a>{pixel}'.format(
+    return jinja2.Markup('<a class="affiliate" target="_blank" rel="noopener" href="{href}">{text}</a>{pixel}'.format(
         href=url, text=text, pixel=pixel))
 
 

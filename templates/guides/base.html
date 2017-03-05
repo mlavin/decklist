@@ -1,5 +1,21 @@
 {% extends "base.html" %}
 
+{% macro display_examples(examples) -%}
+    <div class="row">
+        {% for asin, _name in examples %}
+            <div class="col-xs-6 col-sm-4 col-md-3 text-center">
+                {{ asin|affiliate_link() }}
+            </div>
+        {% endfor %}
+    </div>
+{%- endmacro %}
+
+{% macro list_examples(examples) -%}
+    {% for asin, name in examples -%}
+        {% if loop.last and not loop.first %}and {% endif %}{{ asin|affiliate_link(name, page='detail') }}{% if not loop.last %}, {% endif %}
+    {%- endfor %}
+{%- endmacro %}
+
 {% set nav_guide = True %}
 
 {% block title %}Card and Deck Building Guide - {{ super() }}{% endblock %}
