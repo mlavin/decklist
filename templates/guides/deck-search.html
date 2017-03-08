@@ -1,0 +1,129 @@
+{% extends "guides/base.html" %}
+
+{% block title %}Deck Search - {{ super() }}{% endblock %}
+
+{% block description %}Guide for supporting cards for searching through your deck in Pokémon Trading Card Game.{% endblock %}
+
+{% block content %}
+<section class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8">
+            <h2>Deck Search Guide</h2>
+
+            <h3>Overview</h3>
+            <p>To overcome the randomness of the draw, you need cards to help you
+            find your Pokémon, energy, and other trainer and supporter cards. These
+            don't replace general draw support but can help you conserve resources
+            by finding exactly what you want or need.</p>
+
+            <h3>Pokémon Search</h3>
+            <p>All decks need to get their Pokémon out of the deck and into
+            the playing field. Nearly all decks use four
+            {{ 'B01EU45830'|affiliate_link('Ultra Ball', page='detail') }} to find any
+            Pokémon you need. {{ 'B06X15X345'|affiliate_link('Nest Ball', page='detail') }}
+            can search out any basic but it plays them right to the bench which
+            won't activate abilities like those on
+            {{ 'B00WTGHDGW'|affiliate_link('Shaymin-EX', page='detail') }} and
+            {{ 'B017AHK5O6'|affiliate_link('Hoopa-EX', page='detail') }}.
+            {{ 'B0128VBENK'|affiliate_link('Level Ball', page='detail') }} is a staple
+            in evolution based decks since it can search out any Pokémon with
+            90 HP or less. {{ 'B06X8WWHCQ'|affiliate_link('Timer Ball', page='detail') }}
+            can help search our higher evolutions but does rely on coin flips.
+            Specificly for water decks, {{ 'B00S5LN0PS'|affiliate_link('Dive Ball', page='detail') }}
+            is great because it can search out any water Pokémon without requiring
+            a discard like Ultra Ball.</p>
+
+            {% set examples = [
+                ('B01EU45830', 'Ultra Ball'),
+                ('B06X15X345', 'Nest Ball'),
+                ('B0128VBENK', 'Level Ball'),
+                ('B06X8WWHCQ', 'Timer Ball'),
+                ('B00S5LN0PS', 'Dive Ball'),
+            ] %}
+
+            {{ display_examples(examples) }}
+
+            <p>There are a few supports which can help search out Pokémon as well.
+            {{ 'B016VKBT98'|affiliate_link('Brigette', page='detail') }} works like Nest Ball
+            putting three basic Pokémon directly to the bench (or a single EX basic).
+            {{ 'B01EU44WSM'|affiliate_link('Pokémon Fan Club', page='detail') }} can find
+            two basic Pokémon and put them in your hand.
+            {{ 'B00WTGLEDA'|affiliate_link('Winona', page='detail') }} can search out three
+            colorless Pokémon of any evolution stage and put them in your hand.
+            {{ 'B00WTGKYS6'|affiliate_link('Wally', page='detail') }} searches out non-EX evolution
+            Pokémon and allows you to evolve on the same turn. While these cards
+            can be helpful, you generally aren't going to include more than one or
+            two of them in a deck since you can play multiple Poké ball cards
+            in a turn but you can only play a single supporter for your turn.</p>
+
+            {% set examples = [
+                ('B016VKBT98', 'Brigette'),
+                ('B01EU44WSM', 'Pokemon Fan Club'),
+                ('B00WTGLEDA', 'Winona'),
+                ('B00WTGKYS6', 'Wally'),
+            ] %}
+
+            {{ display_examples(examples) }}
+
+            <h3>Energy Search</h3>
+            <p>There aren't a lot of cards which can search out energy, particularly
+            special engery. {{ 'B016VKCBD6'|affiliate_link('Professor\'s Letter', page='detail') }}
+            can search out two basic energy but it does not see a lot of usage outside
+            of theme decks. {{ 'B00S5LNGZM'|affiliate_link('Teammates', page='detail') }} can
+            be used to search out any two cards in your deck, including special energy,
+            but it can only be played the turn after your opponent has knocked out
+            one of your Pokémon so it more of a recovery card than a general
+            search card. {{ 'B01B3LFAZY'|affiliate_link('Misty\'s Determination', page='detail') }}
+            can let you search the top eight cards in your deck for the cost of
+            discarding one to help you look for energy or any other card you might
+            need there. Overall there aren't a lot of great options for energy search
+            in Standard so you are generally relying on a sufficiently high energy
+            count (8-12 basic energy) and enough general draw support to find
+            them each turn. If your deck is running into problems finding energy,
+            a combination of a single Professor's Letter and a single
+            {{ 'B016VKCEAG'|affiliate_link('Skyla', page='detail') }} and be a combo to help
+            you always find the basic energy you need.</p>
+
+            {% set examples = [
+                ('B016VKCBD6', 'Letter'),
+                ('B00S5LNGZM', 'Teammates'),
+                ('B01B3LFAZY', 'Misty'),
+                ('B016VKCEAG', 'Skyla'),
+            ] %}
+
+            {{ display_examples(examples) }}
+
+            <h3>Trainer Search</h3>
+            <p>As previously mentioned, {{ 'B016VKCEAG'|affiliate_link('Skyla', page='detail') }}
+            is a handy, often single count, supporter which can find any other trainer
+            card in your deck. When combined with the ball search cards, it can
+            be used to search out Pokémon if needed or combined with Professor's Letter
+            then Skyla can find energy. Also handy for finding stadiums when needed
+            or switching cards.</p>
+
+            <p>{{ 'B00WTGJMY8'|affiliate_link('Trainer\'s Mail', page='detail') }} is a popular
+            search/consitency card which let's you select a trainer card from the
+            top 4 of your deck. {{ 'B00S5LMUUO'|affiliate_link('Acro Bike', page='detail') }}
+            let's you look at the top two cards, selecting one for your hand and
+            discarding the other. Both of these cards can help you thin your deck
+            of cards so that you'll draw into cards you want later in the game.</p>
+
+            {% set examples = [
+                ('B00WTGJMY8', 'Mail'),
+                ('B00S5LMUUO', 'Acro'),
+            ] %}
+
+            {{ display_examples(examples) }}
+
+            <h3>Summary</h3>
+            <p>Pokémon search is a key component of every deck and nearly every deck
+            will benefit from using four Ultra Balls. Other ball search cards can
+            be helpful depending on the type of Pokémon you need to find. Skyla is
+            a useful multi-purpose search card though it does use your supporter
+            for your turn. Generally if you can search out the Pokémon you need
+            early and have sufficient draw support then you can find the cards
+            you need to carry out your game.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}
