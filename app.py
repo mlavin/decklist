@@ -31,8 +31,8 @@ async def card_guide(request):
     context = {}
     name = request.match_info.get('name', 'overview')
     if name not in ('overview', 'attacking-pokemon', 'supporting-pokemon', 'deck-search',
-                    'energy-acceleration', 'healing', 'recycle', 'disruption',
-                    'switching', 'stadiums'):
+                    'draw-support', 'energy-acceleration', 'healing', 'recycle',
+                    'disruption', 'switching', 'stadiums'):
         raise web.HTTPNotFound()
     template_name = 'guides/{}.html'.format(name)
     return aiohttp_jinja2.render_template(template_name, request, context)

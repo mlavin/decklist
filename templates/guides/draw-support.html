@@ -1,0 +1,107 @@
+{% extends "guides/base.html" %}
+
+{% block title %}Draw Support - {{ super() }}{% endblock %}
+
+{% block description %}Card guide for the best draw support cards in Pokémon Trading Card Game.{% endblock %}
+
+{% block content %}
+<section class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8">
+            <h2>Draw Support Guide</h2>
+
+            <h3>Overview</h3>
+            <p>Drawing a single card a turn often isn't enough to get to
+            the cards you'll want to setup your attacking Pokémon with energy
+            and tools, getting out your stadium, and your supporting Pokémon.
+            For example most turns you'd like to attach an energy and play
+            you supporter for your turn and that's two cards already. To
+            be able to draw into more cards, you'll need to have draw
+            support in your deck.</p>
+
+            <h3>Supporter Engine</h3>
+            <p>The best and most consistent cards for drawing more cards
+            are supporters. Most decks play 3-4 copies of
+            {{ 'B01B3LFGY4'|affiliate_link('Professor Sycamore', page='detail') }} and
+            2-4 copies of {{ 'B01EU44SKO'|affiliate_link('N', page='detail') }} for
+            their primary draw supporters. Professor Sycamore let's you
+            draw the most cards but requires discarding your hand. If you
+            can't play down all of your cards first this can be difficult
+            to do. N allows you to shuffle your hand and keep your cards but
+            you only get cards for your current prizes meaning it's a good
+            number of cards in the early turns but doesn't draw very many
+            cards if you have taken most of your prizes. If your opponent
+            has taken more prizes then this can also hurt them so N can
+            serve a duel purpose.
+            {{ 'B01MRDJZ41'|affiliate_link('Lillie', page='detail') }}
+            is another good choice for 1-2 copies. It requires you to be
+            able to play down your had but doesn't require any discard.
+            Along with 4 copies of
+            {{ 'B00OZ37CL8'|affiliate_link('VS Seeker', page='detail') }}
+            to potentially reuse them through the game this gives a great
+            amount of draw support.</p>
+
+            {{ display_examples([('B01B3LFGY4', 'Sycamore'), ('B01EU44SKO', 'N'),
+                ('B01MRDJZ41', 'Lillie'), ('B00OZ37CL8', 'VS Seeker'), ]) }}
+
+            <p>Alternative supporters you could play include
+            {{ 'B00S5LNA5I'|affiliate_link('Professor Birch\'s Observations', page='detail') }}
+            and {{ ''|affiliate_link('Shauna', page='detail') }}
+            which are both a shuffle-draw type of supporter like N. Birch has
+            the potential to give more cards on a coin flip whereas Shauna gives
+            a consistent five cards. {{ 'B01B3LFRRA'|affiliate_link('Tierno', page='detail') }}
+            and {{ 'B01MTGK49S'|affiliate_link('Hau', page='detail') }}
+            both let you draw three more cards at any point but most of the other
+            options listed tend to draw more if you're able to play down cards
+            from your hand first.</p>
+
+            {{ display_examples([('B00S5LNA5I', 'Birch'), ('B01EU453EE', 'Shauna'),
+                ('B01B3LFRRA', 'Tierno'), ('B01MTGK49S', 'Hau'), ]) }}
+
+            <h3>Draw Pokémon</h3>
+            <p>As mentioned, in the <a href="/guides/supporting-pokemon/">supporting Pokémon guide</a>,
+            {{ 'B00WTGHDGW'|affiliate_link('Shaymin-EX (Roaring Skies)', page='detail') }} is great Pokémon
+            for allowing you to draw more cards without having to play a supporter or
+            in addition to any support you've played for your turn. It's mostly a one-time
+            use that when it's played to the bench, you can draw until you have six cards
+            simlilar to Lillie. {{ 'B016VKAYHQ'|affiliate_link('Octillery (BREAKthrough)', page='detail') }}
+            and {{ 'B06WV7KNM8'|affiliate_link('Organguru (Sun &amp; Moon)', page='detail') }} each
+            have abilities that let you draw cards until you have five or three in your
+            hand respectively and can be used once per turn. So while Shaymin is great
+            in the early turns, Octillery and Organguru help you keep a consistent
+            hand size throughout the game. These do of course take up space on your
+            bench and can be knocked out, particularly Shaymin which only has 110 HP
+            and gives up two prizes because it's an EX Pokémon.</p>
+
+            {{ display_examples([('B00WTGHDGW', 'Shaymin-EX'), ('B016VKAYHQ', 'Octillery'), ('B06WV7KNM8', 'Organguru'), ]) }}
+
+            <p>For the most part you don't want to have to use an attack to draw
+            more cards, but there are a few Pokémon which have single energy attacks
+            which can help you draw cards to get setup and make for a decent first attack.
+            {{ 'B01IUAEYXU'|affiliate_link('Talonflame (Steam Siege)', page='detail') }} is
+            a stage two Pokémon with the interesting ability "Gale Wings" which allows
+            it to be your starting Pokémon if it's in your openning hand. Its attack
+            "Aero Blitz" does 40 damage and let's you search your deck for any two
+            cards and put them into your hand. {{ 'B06X15WGH4'|affiliate_link('Lapras-GX (Sun &amp; Moon)', page='detail') }}
+            is a big 190 HP basic with the attack "Collect" which let's you draw three
+            more cards. There are a number of lower HP Pokémon which similiar abilities
+            but they aren't often useful because you don't want to attach energy to
+            them or have them take up space in the deck. Attacks which give you
+            more cards are always risky because you can't immediately play them and
+            your opponent can play a card like N to make you shuffle them back into the deck
+            so use them with caution.</p>
+
+            {{ display_examples([('B01IUAEYXU', 'Talonflame'), ('B06X15WGH4', 'Lapras'), ]) }}
+
+            <h3>Summary</h3>
+            <p>Each deck needs 6-12 cards dedicated to draw support and the combination
+            of Professor Sycamore and N fill that role for many decks. For decks that
+            expect to take prizes early, N won't be a great card for drawing more
+            cards and can be supplemented with other draw supporters like Lillie.
+            There are Pokémon which can help you draw more cards and the best of
+            those focus on abilities rather than having to use your attack to draw
+            cards.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}
