@@ -1,0 +1,179 @@
+{% extends "guides/base.html" %}
+
+{% block title %}Energy Acceleration - {{ super() }}{% endblock %}
+
+{% block description %}Key cards for accelerating energy attachments in Pokémon Trading Card Game.{% endblock %}
+
+{% block content %}
+<section class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8">
+            <h2>Energy Acceleration Guide</h2>
+
+            <h3>Overview</h3>
+            <p>You can only attach a single energy per turn but many attacks
+            cost more than a single energy.</p>
+
+            <h3>Trainer Cards</h3>
+            <p>Most trainer cards for energy acceleration aren't specific to
+            a certain type of Pokémon so they can work in almost any deck.
+            {{ 'B01B3LF6TE'|affiliate_link('Max Elixir', page='detail') }} allows you
+            to search the top six cards and attach a basic energy to a
+            basic Pokémon on the bench. For this to be the most useful
+            in the early turns, the deck needs to have a fairly high basic energy,
+            10-12 basic energy. This can be good later in the game as you
+            thin the deck of Pokémon and other trainer cards increasing the
+            chance of finding the energy. {{ 'B06VSYC81V'|affiliate_link('Exp Share', page='detail') }}
+            is a tool which doesn't help you get more energy out but does help
+            you keep energy you've attached in play. This is helpful for setting
+            up backup attackers or for decks which do damage based on the amount
+            of energy attached.</p>
+
+            {{ display_examples([('B01B3LF6TE', 'Max Elixir'), ('B06VSYC81V', 'Exp Share'), ]) }}
+
+            <p>{{ 'B00WTGGE4E'|affiliate_link('Mega Turbo', page='detail') }} is a trainer
+            card adding energy acceleration specifically for Mega evolutions.
+            Unlike Max Exlixir, Mega Turbo draws energy from the discard pile
+            rather than the deck. This means you need to be able to discard
+            energy first using cards like Ultra Ball or Professor Sycamore.
+            In some cases, {{ 'B01NB0OWHE'|affiliate_link('Energy Switch', page='detail') }}
+            can be used in combination with Max Elixir or Mega Tubro to attach
+            energy to the bench and then switch it to the active Pokémon.</p>
+
+            {{ display_examples([('B00WTGGE4E', 'Mega Turbo'), ('B01NB0OWHE', 'Energy Switch') ]) }}
+
+            <h3>Special Energy</h3>
+            <p>{{ 'B06WV7MKK9'|affiliate_link('Double Colorless Energy', page='detail') }} is
+            a versatile special energy card which can be played in a number of
+            decks to reduce the number of turns required to attack. When attached
+            it counts as two energy though only colorless type. Combined with Max Elixir
+            or Mega Turbo, it makes it so that an attack which would normally take
+            three turns to attach enough energy can be done in just one.
+            {{ 'B00WTGGGRO'|affiliate_link('Double Dragon Energy', page='detail') }}
+            is another special energy that counts as two energy when attached.
+            It also can count as energy of any type but it can only be attached
+            to dragon type Pokémon. Remeber when building a deck which uses special
+            energy that, unlike basic energy, you can only include four special
+            energy cards of the same name. Also cards like Max Elixir and Mega Turbo
+            can't search out and attach special energy, so you'll need to
+            rely on <a href="/guides/draw-support/">draw support</a> in your
+            deck to find them.</p>
+
+            {{ display_examples([('B06WV7MKK9', 'DCE'), ('B00WTGGGRO', 'DDE'), ]) }}
+
+            <h3>Pokémon Abilities</h3>
+            <p>Trainer cards such as Max Elixir and Exp Share and special energy such as
+            Double Colorless Energy can be played in a number of different decks
+            because they aren't tied to any particular type of Pokémon. Some
+            decks can advantage of Pokémon abilities to accelerate energy attachments
+            for a particular type of energy.</p>
+
+            {% set examples = [
+                ('B016VKBPH4', 'Magnezone (BREAKthrough)'),
+                ('B00WTGGWIC', 'Reshiram (Roaring Skies)'),
+                ('B00S5LLP4G', 'Sceptile (Primal Clash)'),
+                ('B01IUALKYQ', 'Clawitzer (Steam Siege)'),
+            ] %}
+
+            <p>{{ list_examples(examples) }} each can allow you to attach an
+            addtional engery from your hand. Magnezone can allow you to attach
+            as many lightning energy as you have each turn but it's a stage 2
+            and can be slow to setup. Sceptile allows attaching another grass
+            energy and heals 30 damage but it's also a stage 2. Clawitzer allows
+            attaching an extra special energy but it can only only attach to
+            Mega evolutions. Reshiram is a basic which allows attaching an
+            extra fire energy but it needs to be the active Pokémon and it can
+            only attach to dragon types.</p>
+
+            {{ display_examples(examples) }}
+
+            {% set examples = [
+                ('B01EU45PEW', 'Delphox BREAK (Fates Collide)'),
+                ('B00WTGJAE0', 'Togekiss (Roaring Skies)'),
+                ('B06VSQ5WYX', 'Vikavolt (Sun &amp; Moon)'),
+            ] %}
+
+            <p>{{ list_examples(examples) }} let you search your deck for
+            energy to attach but they are all stage 2 or higher. Delphox BREAK
+            is a BREAK evolution on top of a stage 2 so unless you are planning
+            on attacking with it then it takes up far too many cards to use
+            for accelerating fire energy into play. Togekiss can grab any basic
+            energy from the top eight cards but it only activates when it evolves
+            and it's a stage 2. Vikavolt is another stage 2 with a powerful ability
+            to attach both a lightning and grass energy from the deck on every turn.</p>
+
+            {{ display_examples(examples) }}
+
+            <p>Finally, {{ 'B01M3XD8UT'|affiliate_link('Electrode (Evolutions)', page='detail') }}
+            has an interesting "Buzztap Thunder" ability which allows it to become
+            two lightning energy for any lightning type Pokémon. It does give your
+            opponent a knock out and a prize card when it's activated so you don't
+            want to use too many of these.</p>
+
+            {{ display_examples([('B01M3XD8UT', 'Electrode'), ]) }}
+
+            <h3>Pokémon Attacks</h3>
+            <p>Other Pokémon have attacks which can help attach more energy to your Pokémon
+            in play. Similar to Max Elixir and Mega Turbo, some will get energy from
+            the deck and others get draw it from the discard pile. While it does
+            use your attack for the turn and leaves the Pokémon in the active which
+            could be knocked out, some do a small bit of damage which can also
+            help setup future knockout.</p>
+
+            {% set examples = [
+                ('B01IUAK6K0', 'Xerneas (Steam Siege)'),
+                ('B06X3RLTYQ', 'Fomantis (Sun &amp; Moon)'),
+                ('B01B3LEN7U', 'Palkia-EX (BREAKPoint)'),
+                ('B06VSQSKSQ', 'Solgaleo-GX (Sun &amp; Moon)'),
+            ] %}
+
+            <p>{{ list_examples(examples) }} all let you search your deck for energy
+            and attach it to your Pokémon. Xerneas is a basic that let's you get
+            a fairy energy for two Pokémon on the bench. Fomantis is also a basic
+            which let's you get a grass energy and attach it anywhere including
+            itself. Neither do any damage with their attack. Palkia-EX is an EX
+            which costs two energy but can then get two water energy to attach
+            to a single benched Pokémon. Finally Solgaleo-GX is a stage 2 GX which
+            has a GX attack which allows you to get five energy of any type, including
+            special energy, and put them anywhere you like. It's such a powerful
+            attack you can only use it, and any other GX attack, once in a game.</p>
+
+            {{ display_examples(examples) }}
+
+            {% set examples = [
+                ('B01IUAJ50C', 'Volcanion (Steam Siege)'),
+                ('B01IUAHRMK', 'Yveltal (Steam Siege)'),
+                ('B01EU47UWC', 'Carbink BREAK (Fates Collide)'),
+                ('B06WV7JLWZ', 'Lurantis-GX (Sun &amp; Moon)'),
+            ] %}
+
+            <p>{{ list_examples(examples) }} all have attacks which do a small amount
+            of damage and can pull energy out of the discard pile. This can be
+            helpful early in the game to get energy discarded by an early Ultra Ball
+            or later in the game to recover energy from Pokémon which were knocked
+            out or from playing energy to retreat. Volcanion and Yveltal
+            have to attach to the bench but Lurantis-GX and Carbink BREAK can
+            attach the energy to the active. Only Carbink BREAK can get special
+            energy out of the discard.</p>
+
+            {{ display_examples(examples) }}
+
+            <p>Finally {{ 'B01NB0OU7T'|affiliate_link('Dragonair (Sun &amp; Moon)', page='detail') }}
+            has the attack "Dragon's Wish" which allows you to attach as much
+            energy you like from your hand on your next turn. This means you'll
+            need to have ways to draw as much energy as possible into your
+            hand perhaps with {{ 'B016VKCBD6'|affiliate_link('Professor\'s Letter', page='detail') }}.</p>
+
+            {{ display_examples([('B01NB0OU7T', 'Dragonair'), ('B016VKCBD6', 'Letter'), ]) }}
+
+            <h3>Summary</h3>
+            <p>Any deck which plans on using an attack costing more than one energy
+            should have a plan for energy acceleration. You'll need it to both setup
+            your original attacker as well as setting up additional attackers
+            on the bench. Depending on the cost of the attacks or the types of
+            your attacker, you might combine approaches to ensure the most
+            consistent setup.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}
