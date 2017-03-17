@@ -1,0 +1,73 @@
+{% extends "guides/base.html" %}
+
+{% block title %}Healing - {{ super() }}{% endblock %}
+
+{% block description %}Healing cards available in the standard format for the Pokémon Trading Card Game.{% endblock %}
+
+{% block content %}
+<section class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8">
+            <h2>Healing Guide</h2>
+
+            <h3>Overview</h3>
+            <p>If you can find the space, it can be helpful to include 1-3 healing
+            cards in your deck. These could be items, supporters, or stadiums.
+            These won't necessarily be helpful in every game so you don't want to put
+            in too many. In particular, healing cards become irrelevant if your
+            opponent can one-hit KO your active Pokémon and you don't want them
+            filling up your deck.</p>
+
+            <h3>Healing Items</h3>
+            <p>The series of potions are the most common healing cards. Of these
+            {{ 'B01B3LF932'|affiliate_link('Max Potion', page='detail') }} is the most
+            powerful because it can fully heal any Pokémon. This does come
+            at the cost of discarding all of the attached energy so it's
+            best played in decks with low energy attackers or decks which
+            have good <a href="/guides/energy-acceleration/">energy acceleration</a>
+            from the discard pile. {{ 'B01N18GA37'|affiliate_link('Big Malasada', page='detail') }}
+            can heal 20 HP and remove a special condition such as sleep, poison, burn,
+            or paralysis. In general, items which remove special conditions
+            aren't used in favor of switching cards which can have the same effect
+            of removing the condition.</p>
+
+            {{ display_examples([('B01B3LF932', 'Max Potion'), ('B01N18GA37', 'Malasada'), ]) }}
+
+            <p>{{ 'B01EU44E8A'|affiliate_link('Fairy Drop', page='detail') }} is
+            another healing card which can only be used on Pokémon with a fairy
+            energy attached. That doesn't mean that it can only be played in
+            fairy based decks though. Remember that
+            {{ 'B00WTGGGRO'|affiliate_link('Double Dragon Energy', page='detail') }}
+            and
+            {{ 'B01NB0MEVN'|affiliate_link('Rainbow Energy', page='detail') }} can
+            both count as fairy energy for the purpose of attacking or using Fairy Drop.</p>
+
+            {{ display_examples([('B01EU44E8A', 'Fairy Drop'), ('B00WTGGGRO', 'DDE'), ('B01NB0MEVN', 'Rainbow')]) }}
+
+            <h3>Healing Supporters</h3>
+            <p>Supporters as usual provide some of the most powerful healing cards
+            in the game. However, you can only use one per turn as with all supporters.
+            {{ 'B01BZE96MC'|affiliate_link('Pokémon Center Lady', page='detail') }} can
+            heal 60 HP while also removing any special conditions. 60 HP is enough
+            of a heal that it can often turn a one-hit KO into a two-hit.
+            {{ 'B01BZE95SC'|affiliate_link('Olympia', page='detail') }} only heals
+            30 HP but serves a dual purpose in that it also switches your active
+            Pokémon taking it out of harms way. You may need to try out
+            either one in your deck to find which works best for you.</p>
+
+            {{ display_examples([('B01BZE96MC', 'PCL'), ('B01BZE95SC', 'Olympia'), ]) }}
+
+            <h3>Summary</h3>
+            <p>Healing cards are a small component of most decks in the Pokémon
+            Trading Card game but a well-timed heal can set your opponent back
+            a turn and might be enough to swing the game in your favor. Sometimes
+            you only need an extra turn or two to draw the energy or supporter
+            card that will win you the game. However, they aren't useful
+            early in the game so you'll want to be conservative about how
+            many you add. Finding the right number and balance takes some
+            trial and error through testing your deck in a number of different
+            games and match ups.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}
