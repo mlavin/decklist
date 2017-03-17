@@ -123,6 +123,7 @@ def format_affiliate_link(environ, asin, text='', page='offer'):
 
     tag = environ.globals.get('AWS_ASSOCIATE_ID', '')
     url = format_affiliate_url(environ, asin, page=page)
+    classes = ['affiliate', ]
     if not text:
         src = '//ws-na.amazon-adsystem.com/widgets/q?' + urllib.parse.urlencode({
             '_encoding': 'UTF8',
@@ -135,6 +136,7 @@ def format_affiliate_link(environ, asin, text='', page='offer'):
             'tag': tag,
         })
         text = '<img border="0" src="{src}" >'.format(src=src)
+        classes.append('image')
     pixel_src = '//ir-na.amazon-adsystem.com/e/ir?' + urllib.parse.urlencode({
         't': tag,
         'l': 'am2',
@@ -143,8 +145,8 @@ def format_affiliate_link(environ, asin, text='', page='offer'):
     })
     pixel = ('<img src="{src}" width="1" height="1" border="0" alt=""' +
              'style="border:none !important; margin:0px !important;" />').format(src=pixel_src)
-    return jinja2.Markup('<a class="affiliate" target="_blank" rel="noopener" href="{href}">{text}</a>{pixel}'.format(
-        href=url, text=text, pixel=pixel))
+    return jinja2.Markup('<a class="{classes}" target="_blank" rel="noopener" href="{href}">{text}</a>{pixel}'.format(
+        href=url, text=text, pixel=pixel, classes=' '.join(classes)))
 
 
 if __name__ == '__main__':

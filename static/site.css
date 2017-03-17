@@ -288,6 +288,18 @@ footer a:hover {
     color: #ccc;
 }
 
+a[target="_blank"]:after {
+    font-family: 'Glyphicons Halflings';
+    content: "\e095";
+    font-size: 8px;
+    vertical-align: top;
+    padding-left: 2px;
+}
+
+a.affiliate.image:after {
+    content: "";
+}
+
 a.affiliate > img {
     padding: 5px;
 }
