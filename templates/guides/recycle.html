@@ -1,0 +1,146 @@
+{% extends "guides/base.html" %}
+
+{% block title %}Recycling Cards - {{ super() }}{% endblock %}
+
+{% block description %}Guide for the best cards to recycle card in Pokémon for your deck.{% endblock %}
+
+{% block content %}
+<section class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8">
+            <h2>Recycle and Recovery Guide</h2>
+
+            <h3>Overview</h3>
+            <p>Over the course of a game you are going to have to put cards into
+            the discard pile. This comes from playing trainer cards, losing Pokémon from
+            knockouts, stadiums being replaced, or discarding them from attacks or
+            other card effects or disruption. To be able to recovery or reuse
+            these dicarded cards, your deck should include some form of recovery.</p>
+
+            <h3>Multi-Purpose Recovery</h3>
+            <p>The most flexible recycle/recovery cards are the ones that let
+            you get or more types of cards.
+            {{ 'B016VKCFUK'|affiliate_link('Super Rod', page='detail') }} and
+            {{ 'B01M4QMILY'|affiliate_link('Brock\'s Grit', page='detail') }} are
+            two common cards for recycling Pokémon and basic energy back into
+            the deck. Brock's Grit can recover twice as many cards as Super
+            Rod (six vs three) but uses your supporter for your turn.
+            {{ 'B01B3LFL5S'|affiliate_link('Puzzle of Time', page='detail') }}
+            when played two at a time can recover any two cards from the discard
+            straight into your hand. This is extremely powerful recovery
+            but to pull off the combo usually requires including a full
+            four copies in the deck. This takes up a fair amount of space
+            in the deck and early in the game they aren't very useful.</p>
+
+            {{ display_examples([('B016VKCFUK', 'Super Rod'), ('B01M4QMILY', 'Brock'), ('B01B3LFL5S', 'Puzzle')]) }}
+
+            <p>A few Pokémon have attacks or abilities which allow you to
+            recover cards from the discard pile.
+            {{ 'B00S5LMUDG'|affiliate_link('Bunelby (Primal Clash)', page='detail') }} has
+            the attack "Rototiler" which can put any card back into the
+            deck. Because for the Omega Barrage Ancient Trait, Bunnelby can
+            attack twice in your turn so you can recover two cards per turn.
+            This is a single colorless attack so it can be used in any deck.
+            However, it has a two retreat cost and only 60 HP so the chances
+            are high that recovering these cards could cost you a prize card.
+            {{ 'B00S5LMIC4'|affiliate_link('Milotic (Primal Clash)', page='detail') }} has the
+            ability "Sparkling Ripples" which allows you to recovery any card
+            from your dicard pile to your hand when it evolves. Since it's a
+            stage one, you'll need at least two spots in your deck to recover
+            a single card.
+            {{ 'B06W9F63JH'|affiliate_link('Decidueye-GX (Sun &amp; Moon)', page='detail') }}
+            has the GX attack "Hollow Hunt" which allows you to get back
+            any three cards from the discard back to your hand. Even if your
+            oppenent makes you shuffle your hand back into your deck, those
+            cards will be available to be drawn and played again later. Since
+            it's a GX attack that means you can only use it (and any other
+            GX attack) once per game.</p>
+
+            {{ display_examples([('B00S5LMUDG', 'Bunnelby'), ('B00S5LMIC4', 'Milotic'), ('B06W9F63JH', 'Decidueye-GX'), ]) }}
+
+            <h3>Trainer Recovery</h3>
+            <p>One of the most useful cards in the game right now is
+            {{ 'B00OZ37CL8'|affiliate_link('VS Seeker', page='detail') }}
+            which allows you to reuse a supporter card from the discard. Supporters
+            are after all some of the most powerful and useful cards in the game.
+            This is normally played with a full four copies which can allow for
+            playing single copies of some "tech" supporters in addition
+            to the normal complement of <a href="/guides/draw-support/">draw supporters</a>.
+            {{ 'B0128VAS6O'|affiliate_link('Eco Arm', page='detail') }} is an item
+            to help recover discarded tools. This is particularly useful for
+            decks which play {{ 'B01B3LEW9Y'|affiliate_link('Busting Ballon', page='detail') }}
+            since it discards after a single turn.</p>
+
+            {{ display_examples([('B00OZ37CL8', 'VS'), ('B0128VAS6O', 'Eco'), ('B01B3LEW9Y', 'Ballon')]) }}
+
+            <p>{{ 'B01MTGK4GT'|affiliate_link('Herdier (Sun &amp; Moon)', page='detail') }}
+            has the ability "Treasure Hunt" similar to Milotic but is limited only
+            recoverying item cards. Of course you might have the chance to recover
+            an item like Super Rod which can then recover more cards back into the
+            deck. As with Milotic, the ability activates once when you evolve
+            Herdier from you hand.</p>
+
+            {{ display_examples([('B01MTGK4GT', 'Herdier') ]) }}
+
+            <h3>Pokémon Recovery</h3>
+            <p>In addition to Super Rod and Brock's Grit,
+            {{ 'B01M1A8E8X'|affiliate_link('Karen', page='detail') }} is another supporter
+            which recycles all of the Pokémon from your dicard into your deck.
+            Your opponent will also recover theirs so be mindful of when you
+            use it. {{ 'B016VKBULK'|affiliate_link('Buddy-Buddy Rescue', page='detail') }}
+            has a similar effect that both players recover a Pokémon from their
+            discard but each play only gets one and it goes into their hand
+            rather than back into the deck.
+            {{ 'B01BZE97JO'|affiliate_link('Revitalizer', page='detail') }} does
+            not give your opponent a card back and it lets you get two Pokémon
+            back from the discard from your hand but it can only recover grass
+            Pokémon. {{ 'B01M4QHE7E'|affiliate_link('Revive', page='detail') }}
+            can recover a single basic Pokémon but it gets played straight to
+            the bench so you need to have the space.</p>
+
+            {{ display_examples([('B01M1A8E8X', 'Karen'), ('B016VKBULK', 'Buddy Buddy'),
+                ('B01BZE97JO', 'Revitalizer'), ('B01M4QHE7E', 'Revive'), ]) }}
+
+            <p>{{ 'B01M5IN3LQ'|affiliate_link('Dragonite-EX (Evolutions)', page='detail') }}
+            has the ability "Pull Up" which can fetch any two basic Pokémon from
+            your discard when it is played from your hand to the bench. This
+            is often included in decks which need to fill the bench with Pokémon.
+            It does have a colorless attack but it costs four energy. It also
+            has a three retreat cost so it can be a stall target for your
+            opponent.</p>
+
+            {{ display_examples([('B01M5IN3LQ', 'Dragonite-EX') ]) }}
+
+            <h3>Energy Recovery</h3>
+            <p>As your Pokémon are knocked out, the energy attached to them
+            goes into the discard as well. To ensure that you have enough
+            energy to keep attacking throughout the game, decks in include
+            energy recovery. In many cases Super Rod can be enough to recover
+            basic energy but {{ 'B0128VAW1K'|affiliate_link('Energy Recycler', page='detail') }}
+            can recover five basic energy from the discard back into the deck.
+            {{ 'B016VKBVW8'|affiliate_link('Fisherman', page='detail') }} can
+            fetch four basic energy from the discard back into your hand. Since
+            you can only attached one per turn this can be overkill for a lot
+            of decks and it uses your supporter for your turn.
+            {{ 'B01NB0OPXQ'|affiliate_link('Energy Retrieval', page='detail') }}
+            is an item which can retrive two basic energy from the discard
+            back to your hand. For decks which rely on special energy,
+            {{ 'B01IUAEZ6Q'|affiliate_link('Special Charge', page='detail') }}
+            shuffles two special energy back into the deck.</p>
+
+            {{ display_examples([('B0128VAW1K', 'Energy Recycler'), ('B016VKBVW8', 'Fisherman'),
+                ('B01NB0OPXQ', 'Energy Retrieval'), ('B01IUAEZ6Q', 'Special Charge')]) }}
+
+            <h3>Summary</h3>
+            <p>Including some form of recycle and recovery can help most decks.
+            Knowing that there is a way to recover a supporter or basic energy
+            can make it easier to discard them with cards like Ultra Ball
+            or Professor Sycamore. Keep in mind that these cards aren't very
+            useful early in the game so you don't want to include too many
+            or they will start to slow down your early turn setup. Finding
+            the right cards and balance takes practice and testing for your
+            deck.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}
