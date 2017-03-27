@@ -1,0 +1,163 @@
+{% extends "guides/base.html" %}
+
+{% block title %}Disruption Cards - {{ super() }}{% endblock %}
+
+{% block description %}The best cards to disrupt your opponent in the Pokémon Trading Card Game.{% endblock %}
+
+{% block content %}
+<section class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8">
+            <h2>Disruption Guide</h2>
+
+            <h3>Overview</h3>
+            <p>If there is space, it can help to add a few cards to disrupt your
+            opponent. These might be to help with certain match ups that would
+            otherwise be difficult for your deck or more general cards to
+            buy you an extra turn in any match up. There are several different
+            ways you can disrupt your opponent (or they can disrupt you) and
+            this guide will go through some of the best cards in the Standard
+            format for disruption.</p>
+
+            <h3>Pokémon Disruption</h3>
+            <p>You don't want to make it easy for your opponent to setup
+            their Pokémon and attack you. Changing their active Pokémon on
+            them can help you take a quick knock out on a weak
+            <a href="/guides/supporting-pokemon/">supporting Pokémon</a> or
+            stall for a few turns with one of their Pokémon which doesn't
+            yet have the energy to attack.
+            {{ 'B0128VBONK'|affiliate_link('Lysandre', page='detail') }} is a
+            staple supporter with the ability to bring up any benched Pokémon
+            to the active. Most decks include 2-3 copies.
+            {{ 'B01MTGK8V8'|affiliate_link('Pokémon Catcher', page='detail') }} is
+            an item with the same effect but requires heads on a coin flip.
+            {{ 'B00S5LN2LK'|affiliate_link('Escape Rope', page='detail') }} allows you
+            and your opponent to change their active but your opponent goes first.
+            This can be useful for both getting something out of the way or
+            bringing up something which isn't ready yet.
+            {{ 'B01IUAFGEG'|affiliate_link('Captivating Poke Puff', page='detail') }}
+            doesn't impact the active Pokémon but it can force your opponent
+            to bench a Pokémon. This can be very disruptive for Pokémon such as
+            Shaymin-EX or Hoopa-EX which have abilities that activate when they
+            are played to the bench normally but won't activate this way.</p>
+
+            {{ display_examples([('B0128VBONK', 'Lysandre'), ('B01MTGK8V8', 'Catcher'),
+                ('B00S5LN2LK', 'Rope'), ('B01IUAFGEG', 'Poke Puff')]) }}
+
+            <p>{{ 'B0128VBALG'|affiliate_link('Hex Maniac', page='detail') }} is
+            a disruptive supporter which stops all Pokémon abilities for a turn.
+            This can slow down damage you opponent can do with their attacks next
+            turn or slow down their ability to setup without supporting Pokémon.
+            {{ 'B00S5LNG2K'|affiliate_link('Silent Lab', page='detail') }} is
+            a stadium with a similar effect but it only impacts basic Pokémon.
+            Also since it's a stadium your opponent has the opportunity to replace
+            it with their own stadium, if they have one. But it will last as
+            long as it's in play. {{ 'B016VKC9UG'|affiliate_link('Parallel City', page='detail') }}
+            is another disruptive stadium with two choices. Either it can
+            limit your opponent's bench size to only three Pokémon or it can
+            reduce damage from grass, fire, and water Pokémon by 20. Be careful
+            though because one side faces your opponent and the other faces you.
+            Still either side can be valuable depending the match up.</p>
+
+            {{ display_examples([('B0128VBALG', 'Hex'), ('B00S5LNG2K', 'Lab'), ('B016VKC9UG', 'Parallel') ]) }}
+
+            <h3>Energy Disruption</h3>
+            <p>Since you can only attach a single energy per turn, losing energy
+            off of the board can set really set you back and cause you to miss
+            a turn of attacking. Decks that can
+            <a href="/guides/energy-acceleration/">accelerate energy</a> from the
+            discard pile or have <a href="/guides/recycle/">energy recovery</a>
+            can still bounce back but other decks can simply run out of energy
+            with enough disruption. {{ 'B01NB0E4RO'|affiliate_link('Crushing Hammer', page='detail') }}
+            can remove any energy attached to any Pokémon but it requires flipping
+            heads. {{ 'B00OZ35BJ8'|affiliate_link('Enhanced Hammer', page='detail') }}
+            doesn't require a coin flip but it can only discard special energy so
+            it won't be useful in every matchup.
+            {{ 'B01BZE98NO'|affiliate_link('Team Flare Grunt', page='detail') }}
+            is a supporter which discards any energy but only from the active Pokémon.</p>
+
+            {{ display_examples([('B01NB0E4RO', 'Crushing'), ('B00OZ35BJ8', 'Enhanced'), ('B01BZE98NO', 'Flare Grunt') ]) }}
+
+            <p>There are a number of different Pokémon which discard energy with
+            attacks. Of those, {{ 'B01AWTP2B0'|affiliate_link('Jirachi (XY67)', page='detail') }}
+            is the most easily included into decks because it has an attack for
+            a single colorless energy which can discard special energy.
+            {{ 'B01M4QKHYJ'|affiliate_link('Raticate (Evolutions)', page='detail') }}
+            has two single-energy colorless attacks. The first discards any
+            energy and the second does more damage for the amount of special energy
+            in the discard. Since it's a stage one, it takes up more spaces
+            in the deck and since it's a Pokémon it can be knocked out and give up
+            a prize.</p>
+
+            {{ display_examples([('B01AWTP2B0', 'Jirachi'), ('B01M4QKHYJ', 'Raticate')]) }}
+
+            <h3>Hand Disruption</h3>
+            <p>So far this guide has focused on cards that are already active in play,
+            but you can also disrupt your opponent's hand and their ability to
+            play cards as well. {{ 'B01EU44SKO'|affiliate_link('N', page='detail') }}
+            is a supporter played for early game <a href="/guides/draw-support/">draw support</a>
+            and late in the game it can disrupt your opponent if they've taken most
+            of their prizes. {{ 'B0128VAIT6'|affiliate_link('Ace Trainer', page='detail') }}
+            has as similar disruptive effect giving the player that is ahead only
+            three cards instead of six but since it can't be played if you're ahead
+            or tied on prizes, N is generally favored.</p>
+
+            {{ display_examples([('B01EU44SKO', 'N'), ('B0128VAIT6', 'Ace Trainer'), ]) }}
+
+            <p>{{ 'B06VSJMR3R'|affiliate_link('Gumshoos-GX (Sun &amp; Moon)', page='detail') }}
+            has the ability "Search the Premises" which allows you to look at your
+            opponent's hand once per turn. This can synergize well with trainers
+            such as {{ 'B01MUJ8TOH'|affiliate_link('Team Skull Grunt', page='detail') }}
+            and {{ 'B01IUAFGEG'|affiliate_link('Captivating Poke Puff', page='detail') }}
+            to force them to discard energy or bench Pokémon early. When there is
+            a stadium in play and your opponent has a low hand size,
+            {{ 'B01B3LEY6K'|affiliate_link('Delinquent', page='detail') }}
+            can force them to get rid of all of their cards. This will leave them
+            hoping to draw something quickly to let them get more cards.</p>
+
+            {{ display_examples([('B06VSJMR3R', 'Gumshoos'), ('B01MUJ8TOH', 'Skull'),
+                ('B01IUAFGEG', 'Poke Puff'), ('B01B3LEY6K', 'Delinquent'), ]) }}
+
+            <p>Along with these trainers, there are Pokémon with hand-disruptive
+            attacks or abilities. {{ 'B0128V8WDK'|affiliate_link('Vileplume (Ancient Origins)', page='detail') }}
+            has the "Irriating Pollen" ability which stops both players from
+            playing any item cards.
+            {{ 'B0128VEJN2'|affiliate_link('Giratina-EX (Ancient Origins)', page='detail') }}
+            has the attack "Chaos Wheel" which prevents your opponent from playing
+            any tools, special energy, or stadiums on their next turn. As long as
+            you can keep the attack going, the lock remains in place. This can
+            lock in a stadium of your choice or hurt decks which rely on special
+            energy for <a href="/guides/energy-acceleration/">energy acceleration</a>.</p>
+
+            {{ display_examples([('B0128V8WDK', 'Vileplume'), ('B0128VEJN2', 'Giratina'), ]) }}
+
+            <h3>Deck Disruption</h3>
+            <p>So far this guide has looked at cards to disrupt cards in play, either
+            in the hand or on the table. There are some disruption cards which allow
+            you discard directly from the deck so your opponent never has the chance
+            to draw them. Without sufficient <a href="/guides/recycle/">recycle cards</a>
+            this can leave your opponent without important cards. Of course
+            if your opponent can't draw a card to start their turn then they lose
+            the game. {{ 'B016VKAIMC'|affiliate_link('Houndoom-EX (BREAKthrough)', page='detail') }}
+            and {{ 'B00S5LMUDG'|affiliate_link('Bunnelby (Primal Clash)', page='detail') }}
+            each have attacks which allow you to discard up to two cards per turn.
+            Neither of these do any damage so they are usually only played in
+            deck which don't intend to take any prizes and instead try to
+            run their opponent out of cards.
+            {{ 'B01EU455NI'|affiliate_link('Team Rocket\'s Handiwork', page='detail') }} is
+            a supporter with the same effect. It can discard up to four cards based
+            on coin flips.</p>
+
+            {{ display_examples([('B016VKAIMC', 'Houndoom'), ('B00S5LMUDG', 'Bunnelby'), ('B01EU455NI', 'Team Rocket'), ]) }}
+
+            <h3>Summary</h3>
+            <p>Adding element of disruption to a deck can help swing a game or two.
+            Unless your deck is going for full disruption, you don't want to add
+            too much and hurt the consistency of your own setup. Many decks find
+            a space for a couple disruption cards to buy an extra turn of attacking,
+            taking a knock out on an important Pokémon, or taking the last prize
+            on an easy target.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}
