@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}Not Found - {{ super() }}{% endblock %}
+
+
+{% block content %}
+<section class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8">
+            <h2>Page Not Found</h2>
+            <p>Oh no! We couldn't find the page you were looking for :-(</p>
+<pre>
+                                  _.---"'"""""'`--.._
+                             _,.-'                   `-._
+                         _,."                            -.
+                     .-""   ___...---------.._             `.
+                     `---'""                  `-.            `.
+                                                 `.            \
+                                                   `.           \
+                                                     \           \
+                                                      .           \
+                                                      |            .
+                                                      |            |
+                                _________             |            |
+                          _,.-'"         `"'-.._      :            |
+                      _,-'                      `-._.'             |
+                   _.'                              `.             '
+        _.-.    _,+......__                           `.          .
+      .'    `-"'           `"-.,-""--._                 \        /
+     /    ,'                  |    __  \                 \      /
+    `   ..                       +"  )  \                 \    /
+     `.'  \          ,-"`-..    |       |                  \  /
+      / " |        .'       \   '.    _.'                   .'
+     |,.."--"""--..|    "    |    `""`.                     |
+   ,"               `-._     |        |                     |
+ .'                     `-._+         |                     |
+/                           `.                        /     |
+|    `     '                  |                      /      |
+`-.....--.__                  |              |      /       |
+   `./ "| / `-.........--.-   '              |    ,'        '
+     /| ||        `.'  ,'   .'               |_,-+         /
+    / ' '.`.        _,'   ,'     `.          |   '   _,.. /
+   /   `.  `"'"'""'"   _,^--------"`.        |    `.'_  _/
+  /... _.`:.________,.'              `._,.-..|        "'
+ `.__.'                                 `._  /
+                                           "' mh
+</pre>
+        <p>Looking to price a deck list? Check out our <a href="/deckbuilder/">deck pricing calculator</a>.</p>
+        <p>Learning the game and want more info? Our <a href="/guides/overview/">card guides</a> are a good start.</p>
+        <p>Need general site help? Head over to our <a href="/help/">help/FAQ page</a>.</p>
+        {% set amazon_enabled = AWS_ASSOCIATE_ID and AWS_ACCESS_KEY_ID %}
+        {% if amazon_enabled %}
+            <script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=4aba9b02-e474-4ecf-a22b-3dbe846ce236"></script>
+        {% endif %}
+        </div>
+    </div>
+
+</section>
+{% endblock %}

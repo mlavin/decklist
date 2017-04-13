@@ -149,9 +149,22 @@ def format_affiliate_link(environ, asin, text='', page='offer'):
         href=url, text=text, pixel=pixel, classes=' '.join(classes)))
 
 
+async def error_middleware(app, handler):
+    async def middleware_handler(request):
+        try:
+            return await handler(request)
+        except web.HTTPException as ex:
+            if ex.status == 404:
+                response = aiohttp_jinja2.render_template('404.html', request, {})
+                response.set_status(404)
+                return response
+            raise
+    return middleware_handler
+
+
 if __name__ == '__main__':
     loop = asyncio.get_event_loop()
-    app = web.Application(loop=loop)
+    app = web.Application(loop=loop, middlewares=[error_middleware])
     app['base_dir'] = os.path.dirname(os.path.abspath(__file__))
     app['redis'] = redis.from_url(url=os.environ.get('REDIS_URL', 'redis://localhost:6379/0'))
     app['AWS_ASSOCIATE_ID'] = os.environ.get('AWS_ASSOCIATE_ID', '')
