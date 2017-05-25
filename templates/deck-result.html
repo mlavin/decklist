@@ -59,7 +59,7 @@
                 <div class="thumbnail card {% if not price_found %}missing{% endif %}">
                     <strong>{{ card['quantity'] }}x</strong>
                     {% if card_url %}
-                        <a href="{{ card_url }}" target="_blank" title="View on Amazon.com" rel="noopener">
+                        <a href="{{ card_url }}" class="image" target="_blank" title="View on Amazon.com" rel="noopener">
                     {% endif %}
                     <img src="{{ card['imageUrl'] }}" alt="{{ card['name'] }}"
                         data-toggle="popover"

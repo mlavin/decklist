@@ -296,7 +296,8 @@ a[target="_blank"]:after {
     padding-left: 2px;
 }
 
-a.affiliate.image:after {
+a.image:after,
+a[data-window]:after {
     content: "";
 }
 
