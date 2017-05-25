@@ -38,6 +38,7 @@ PTCGO_MAPPING = {
     'EVO': 'xy12',
     'SUM': 'sm1',
     'SM': 'sm1',
+    'GRI': 'sm2',
 }
 
 
