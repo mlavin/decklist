@@ -39,12 +39,14 @@ PTCGO_MAPPING = {
     'SUM': 'sm1',
     'SM': 'sm1',
     'GRI': 'sm2',
+    'PR-SM': 'smp',
 }
 
 
 PROMO_MAPPING = {
     'XY': 'xyp',
     'BW': 'bwp',
+    'SM': 'smp',
 }
 
 
