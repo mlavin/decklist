@@ -47,7 +47,9 @@ def parse_search_response(response_body):
 def prioritize_results(name, card, results):
     """Prioritize regular cards over holo/reverse holos and remove oversized results."""
     q = queue.PriorityQueue()
-    blacklist = ['JUMBO', 'OVERSIZED', 'JAPANESE', 'KOREAN', 'WORLD CHAMPIONSHIP', 'PLAYSET']
+    blacklist = [
+        'JUMBO', 'OVERSIZED', 'JAPANESE', 'KOREAN', 'WORLD CHAMPIONSHIP',
+        'PLAYSET', 'FREE POKEMON TATTOO', ]
     for order, item in enumerate(results):
         title = item.get('title', '')
         if any(b in title.upper() for b in blacklist):
