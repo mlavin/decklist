@@ -26,23 +26,38 @@
                 <dt>130 damage</dt><dd>High HP Basic Non-EX Pokémon and Low HP EX Pokémon (particularly Shaymin-EX)</dd>
                 <dt>180 damage</dt><dd>Basic EX/GX Pokémon and High HP Basic Non-EX Pokémon with a Fighting Fury Belt</dd>
                 <dt>220 damage</dt><dd>Mega EX Pokémon, Stage 1 GX Pokémon, and Basic EX/GX Pokémon with a Fighting Fury Belt</dd>
+                <dt>250 damage</dt><dd>Stage 2 GX Pokémon</dd>
             </dl>
 
             <p>From these numbers you can see that an attack which does 90 damage
             can only one-hit KO (OHKO) lower HP non-EX Pokémon but can two hit both
             high HP non-EX and many EX Pokémon. On the other hand an attack which
             does 80 damage will miss out on the two hit KO for some basic EX/GX Pokémon.
-            Attaching a {{ 'B01B3LF0WW'|affiliate_link('Fighting Fury Belt (BREAKPoint)', page='detail') }} can help
-            with the math by adding an extra 10 damage to each attack. Likewise
-            the supporters {{ 'B01MSEWOUZ'|affiliate_link('Professor Kukui (Sun &amp; Moon)', page='detail') }}
-            or {{ 'B016VKBYXE'|affiliate_link('Giovanni\'s Scheme (BREAKthrough)', page='detail') }}
+            Attaching a {{ 'B01B3LF0WW'|affiliate_link('Fighting Fury Belt', page='detail') }} can help
+            with the math by adding an extra 10 damage to each attack.
+            For hitting the high HP Pokémon EX and GX, you can use
+            {{ 'B071NLXY2C'|affiliate_link('Choice Band', page='detail') }} to do an extra
+            30 damage with your attacks. This can be used by non-basic Pokémon unlike
+            Fighting Fury Belt but doesn't get additional damage when attacking
+            non EX/GX Pokémon. Specifically
+            the supporters {{ 'B01MSEWOUZ'|affiliate_link('Professor Kukui', page='detail') }}
+            or {{ 'B016VKBYXE'|affiliate_link('Giovanni\'s Scheme', page='detail') }}
             can help by adding an additional 20 damage, remembering that you can
-            only play a single supporter per turn.
+            only play a single supporter per turn.</p>
 
-            <p>Some of the most popular attacking Pokémon currently are those which have
-            attacks which can ramp up their damage based on the amount of energy being
+            {% set examples = [
+                ('B01B3LF0WW', 'Fury Belt'),
+                ('B071NLXY2C', 'Choice Band'),
+                ('B01MSEWOUZ', 'Kukui'),
+                ('B016VKBYXE', 'Giovanni'),
+            ] %}
+
+            {{ display_examples(examples) }}
+
+            <p>Attacks which can ramp up their damage based on the amount of energy being
             used, the number or type of benched Pokémon, or the amount of damage on
             the Pokémon in play. Some great examples of these are
+
             {% set examples = [
                 ('B016VKC294', 'Mega Mewtwo-EX (BREAKhrough)'),
                 ('B00S5LLYK6', 'Mega Gardevoir-EX (Primal Clash)'),
@@ -51,6 +66,7 @@
                 ('B00IDLSI7K', 'Yveltal-EX (XY)'),
                 ('B01B3LDPTC', 'Darkrai-EX (BREAKPoint)'),
                 ('B016VKAT2Q', 'Xerneas (BREAKhrough)'),
+                ('B071RS1N74', 'Garbodor (Guardians Rising)'),
                 ('B01NAXAIYK', 'Tarous GX (Sun &amp; Moon)'),
                 ('B0128VBP2U', 'Gyarados (Ancient Origins)'),
                 ('B0128V9RCK', 'Vespiquen (Ancient Origins)'),
