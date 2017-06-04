@@ -99,6 +99,7 @@ def setup_routes(app):
     app.router.add_get('/deckbuilder/', deck)
     app.router.add_post('/deckbuilder/', decksubmit)
     app.router.add_static('/static/', path=os.path.join(app['base_dir'], 'static'), name='static')
+    app.router.add_static('/', path=os.path.join(app['base_dir'], 'public'), name='public')
 
 
 def format_currency(value):
