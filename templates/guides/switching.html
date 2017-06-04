@@ -1,0 +1,140 @@
+{% extends "guides/base.html" %}
+
+{% block title %}Switch Cards - {{ super() }}{% endblock %}
+
+{% block description %}Card guide for switcing Pokémon in the  Pokémon Trading Card Game.{% endblock %}
+
+{% block content %}
+<section class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8">
+            <h2>Switching Guide</h2>
+
+            <h3>Overview</h3>
+            <p>Every deck needs a strategy for switching the Pokémon. Which cards
+            are best and how many to play depends on the number of
+            <a href="/guides/supporting-pokemon/">supporting Pokémon</a> or
+            the retreat and attack cost of the main <a href="/guides/attacking-pokemon/">attackers</a>.
+            This guide will take you through some of the options and you
+            can try them out in your favorite deck.</p>
+
+            <h3>Switching Items</h3>
+            <p>Other than paying the retreat cost with energy, using items is
+            probably the most common way for decks to switch Pokémon.
+            {{ 'B01N7ZQLXJ'|affiliate_link('Switch', page='detail') }} is a simple
+            item which lets you switch your active with one of your benched Pokémon.
+            {{ 'B00S5LN2LK'|affiliate_link('Escape Rope', page='detail') }} not only lets
+            you switch your active but also forces your opponent to switch first.
+            This can help you access a weaker or damaged Pokémon from their bench
+            in addition to getting to switch your own. While Switch and Escape
+            Rope are single use items,
+            {{ 'B016VKBXIU'|affiliate_link('Float Stone', page='detail') }} is a tool which
+            gives any Pokémon free retreat as long as it's attached. Most decks pick
+            one or two of these that best fit the style of the deck though a few
+            include one of each of these three choices.</p>
+
+            {% set examples = [
+                ('B01N7ZQLXJ', 'Switch'),
+                ('B00S5LN2LK', 'Escape Rope'),
+                ('B016VKBXIU', 'Float Stone'),
+            ] %}
+
+            {{ display_examples(examples) }}
+
+            <h3>Switching Supporters</h3>
+            <p>There aren't many good switching supporter cards which are currently
+            legal in the Standard format. {{ 'B01BZE95SC'|affiliate_link('Olympia', page='detail') }}
+            allows you to switch your active Pokémon while also healing 30 damage
+            from it. While that isn't a great amount of damage to heal
+            compared to some of the other <a href="/guides/healing/">healing cards</a>
+            available, it can still be enough to turn a two-hit into a three-hit
+            knock out at times. {{ 'B01IUAESMC'|affiliate_link('Ninja Boy', page='detail') }}
+            is a unique form of switching card. Instead of switching with something
+            from the bench, you can replace any Pokémon with another from the deck
+            keeping any energy, damages, and effects on the Pokémon in play.
+            This can be helpful for setting up surprise attacks, moving out of
+            bad starters, or denying two-prize EX/GX knockouts. Using supporters
+            for switching has the advantage that they can be played under item lock
+            as well as being reusable with {{ 'B00OZ37CL8'|affiliate_link('VS Seeker', page='detail') }}
+            when items can be played.</p>
+
+            {% set examples = [
+                ('B01BZE95SC', 'Olympia'),
+                ('B01IUAESMC', 'Ninja Boy'),
+                ('B00OZ37CL8', 'VS Seeker'),
+            ] %}
+
+            {{ display_examples(examples) }}
+
+            <h3>Switching Pokémon</h3>
+            <p>There are a few Pokémon with abilities which can help you switch
+            your active. Some of them make for good attackers or backup attackers
+            and some of them are just bench sitters. Obviously using abilities
+            to switch your Pokémon can be weak to ability lock disruption but
+            if you are using these to attack that isn't as big of a problem.</p>
+
+            <p>{{ 'B01B3LEOBK'|affiliate_link('Manaphy-EX (BREAKpoint)', page='detail') }}
+            gives free retreat to any Pokémon which a water energy attached but
+            it only has 120 HP and it gives up two prizes when knocked out.
+            {{ 'B016VKA4FI'|affiliate_link('Zoroark (BREAKthrough)', page='detail') }}
+            has the ability "Stand In" allowing it to become the active. When
+            combined with a Float Stone, this can allow you to switch to any
+            Pokémon. It is a stage one so it does take time to setup and space
+            in the deck. However, since it attacks for two colorless energy
+            it can be used any deck.
+            {{ 'B01NAXDIY7'|affiliate_link('Solgaleo-GX (Sun &amp; Moon)', page='detail') }}
+            has a more powerful ability called "Ultra Road" which allows you
+            to switch out anything from the bench so you don't need to pair
+            it with a Float Stone. However, it's a stage two so it mostly
+            only fits into decks which plan to attack with it because of the
+            number of cards it requires to use.
+            {{ 'B072BGN4F7'|affiliate_link('Tapu Koko-GX (Guardians Rising)', page='detail') }}
+            has a similar ability to Zoroark which allows it to become the
+            active with the additional advantage of moving lightning energy
+            onto itself. Since it only activates when it's played from the
+            hand to the bench, it isn't a reliable switching option throughout
+            the game.</p>
+
+            {% set examples = [
+                ('B01B3LEOBK', 'Manaphy-EX'),
+                ('B016VKA4FI', 'Zoroark'),
+                ('B01NAXDIY7', 'Solgaleo-GX'),
+                ('B072BGN4F7', 'Tapu Koko-GX'),
+            ] %}
+
+            {{ display_examples(examples) }}
+
+            <h3>Switching Stadiums</h3>
+            <p>There are a couple good stadiums for switching. They have
+            the advatange over single use items like Switch or Escape Rope
+            that they can be used as long as the stadium is in play. However,
+            your oppontent also has the potential to take advantage of the
+            stadium or can remove it with their own stadium.
+            {{ 'B01EU44GGA'|affiliate_link('Fairy Garden', page='detail') }}
+            gives free retreat to any Pokémon with a fairy energy attached
+            which is a great option for fairy decks.
+            {{ 'B071L13LW8'|affiliate_link('Altar of the Moone', page='detail') }} has
+            a similar effect when darkness or psychic energy is attached but
+            only reduces the retreat cost by two rather than giving everything
+            free retreat. It can fit into more decks because of the two
+            types but it also it more likely to help your opponent as well.</p>
+
+            {% set examples = [
+                ('B01EU44GGA', 'Fairy Garden'),
+                ('B071L13LW8', 'Altar of the Moone'),
+            ] %}
+
+            {{ display_examples(examples) }}
+
+            <h3>Summary</h3>
+            <p>Since most Pokémon don't have free retreat and most decks play
+            Pokémon that aren't meant to attach, decks need a plan to switch
+            their Pokémon. Paying retreat can be a valid option but most decks
+            include 3-4 switching cards of some form. Which ones work best for
+            your favorite deck takes some experimentation and testing. Hopefully
+            this guide gives you an overview of those options when building
+            your next deck.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

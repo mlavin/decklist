@@ -27,8 +27,8 @@
             <h3>Formats</h3>
             <p>Competitive Pokémon play is broken into two formats which dictate the set of
             cards which are allowable for play. These formats are Standard which includes
-            the cards from Primal Clash (released Feb 2015) through the Sun and Moon base set
-            (released Feb 2017) and Expanded which includes the cards from the Black and White
+            the cards from Primal Clash (released Feb 2015) through the Guardians Rising
+            (released May 2017) and Expanded which includes the cards from the Black and White
             base set (released April 2011) through the Sun and Moon base set (released Feb 2017).
             These formats rotate each September, dropping 3-5 of the oldest sets.
             Cards from older sets which have since been reprinted in legal set are still legal
@@ -74,6 +74,15 @@
             new cards come out there are more choices and trade-offs to make.</p>
         </div>
     </div>
+
+    {% set amazon_enabled = AWS_ASSOCIATE_ID and AWS_ACCESS_KEY_ID %}
+    {% if amazon_enabled %}
+    <div class="row">
+        <div class="col-xs-12 col-sm-8">
+            <script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=4aba9b02-e474-4ecf-a22b-3dbe846ce236"></script>
+        </div>
+    </div>
+    {% endif %}
 
     <div class="row">
         <div class="col-xs-12 col-sm-8">
@@ -146,20 +155,20 @@
             what your deck is missing. In fact some decks are built entirely around
             <a href="/guides/disruption/">disruption</a> and every deck can use a little.</p>
 
-            <h3>Switching</h3>
+            <h3><a href="/guides/switching/">Switching</a></h3>
             <p>With the inclusion of your supporting Pokémon, you might not always start
             the Pokémon that you want. In other situations, your oppenent might change your
             active Pokémon. Since energy is a precious resource in the game you don't
             want to pay retreat if you don't have to so having a plan on switching your
             Pokémon is needed in every deck. There are items to help with switching
             as well as tools, stadiums, and other Pokémon and you might want a mix
-            of these switching cards for different situations.</p>
+            of these <a href="/guides/switching/">switching cards</a> for different situations.</p>
 
-            <h3>Stadiums</h3>
+            {# <h3>Stadiums</h3>
             <p>Stadiums can fit into one of the previous roles or can work to
             boost your deck strategy in other ways. Most decks want to include a stadium
             or two if for no other reason than to discard their opponents stadium and
-            to disrupt their strategy.</p>
+            to disrupt their strategy.</p> #}
         </div>
     </div>
 </section>
