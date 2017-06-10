@@ -1,3 +1,5 @@
+var tracker = typeof(ga) == 'undefined' ? console.log: ga;
+
 $(document).ready(function () {
     var button = $('.hamburger'),
         wrapper = $('#wrapper'),
@@ -14,5 +16,14 @@ $(document).ready(function () {
             isClosed = true;
         }
         wrapper.toggleClass('toggled');
+    });
+
+    $('a.affiliate').click(function (e) {
+        tracker('send', 'event', {
+            eventCategory: 'Amazon Affiliate',
+            eventAction: 'click',
+            eventLabel: e.target.href,
+            transport: 'beacon'
+        });
     });
 });
