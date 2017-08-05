@@ -22,8 +22,7 @@ $(document).ready(function () {
         tracker('send', 'event', {
             eventCategory: 'Amazon Affiliate',
             eventAction: 'click',
-            eventLabel: e.target.href,
-            transport: 'beacon'
+            eventLabel: e.target.href
         });
     });
 });
