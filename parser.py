@@ -8,6 +8,7 @@ PTCGO_MAPPING = {
     'TM': 'hgss4',
     'CL': 'col1',
     'PR-BLW': 'bwp',
+    'BWP': 'bwp',
     'BLW': 'bw1',
     'EPO': 'bw2',
     'NVI': 'bw3',
@@ -20,6 +21,7 @@ PTCGO_MAPPING = {
     'PLF': 'bw9',
     'PLB': 'bw10',
     'PR-XY': 'xyp',
+    'XYP': 'xyp',
     'LTR': 'bw11',
     'KSS': 'xy0',
     'XY': 'xy1',
@@ -39,7 +41,10 @@ PTCGO_MAPPING = {
     'SUM': 'sm1',
     'SM': 'sm1',
     'GRI': 'sm2',
+    'GUR': 'sm2',
     'PR-SM': 'smp',
+    'SMP': 'smp',
+    'BUS': 'sm3',
 }
 
 
