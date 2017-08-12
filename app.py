@@ -2,6 +2,7 @@ import asyncio
 import base64
 import binascii
 import datetime
+import json
 import os
 import random
 import time
@@ -38,6 +39,34 @@ async def card_guide(request):
     return aiohttp_jinja2.render_template(template_name, request, context)
 
 
+async def get_card_price(client, card, redis):
+    price = card.get('price') or None
+    timestamp = card.get('timestamp') or (time.time() - 60 * 60 * 24)
+    if not price or float(timestamp) < (time.time() - 60 * 60 * 12):
+        url = 'http://pokeprices.doeiqts.com/api/getcard'
+        params = {'cardset': card['set'].lower(), 'cardnumber': card['number']}
+        price = 'N/A'
+        async with client.get(url, params=params) as response:
+            result = await response.text()
+            try:
+                result = json.loads(result)
+            except:
+                result = {}
+            if result.get('status', '').lower() == 'success':
+                try:
+                    price = float(result['cards'][0]['price'])
+                except (ValueError, IndexError, KeyError):
+                    price = 'N/A'
+        timestamp = time.time()
+        if price != 'N/A':
+            redis.hmset(card['id'], {'price': price, 'timestamp': timestamp})
+    return {
+        'price': float(price) if price != 'N/A' else price,
+        'available': 60,
+        'timestamp': datetime.datetime.fromtimestamp(float(timestamp)).strftime('%I:%M %p EST'),
+    }
+
+
 @aiohttp_jinja2.template('deck.html')
 async def deck(request):
     compressed = request.rel_url.query.get('list', '')
@@ -64,14 +93,23 @@ async def deck(request):
                     results.append(card)
                 else:
                     errors.append(card['name'])
-            prices = await get_amazon_prices(results, client)
-            for card in results:
-                card.update(prices.get(card.get('asin', ''), {'price': 'N/A', 'available': 0}))
-                if card['price'] != 'N/A':
-                    card['subtotal'] = card['price'] * int(card['quantity'])
-                    total_cost += card['subtotal']
-                    total_cards += card['quantity']
-                card['timestamp'] = datetime.datetime.utcnow().strftime('%I:%M %p UTC')
+            if request.app['AWS_ACCESS_KEY_ID'] and request.app['AWS_SECRET_KEY']:
+                prices = await get_amazon_prices(results, client)
+                for card in results:
+                    card.update(prices.get(card.get('asin', ''), {'price': 'N/A', 'available': 0}))
+                    if card['price'] != 'N/A':
+                        card['subtotal'] = card['price'] * int(card['quantity'])
+                        total_cost += card['subtotal']
+                        total_cards += card['quantity']
+                    card['timestamp'] = datetime.datetime.utcnow().strftime('%I:%M %p UTC')
+            else:
+                for card in results:
+                    price = await get_card_price(client, card, request.app['redis'])
+                    card.update(price)
+                    if card['price'] != 'N/A':
+                        card['subtotal'] = card['price'] * int(card['quantity'])
+                        total_cost += card['subtotal']
+                        total_cards += card['quantity']
         return {
             'results': results,
             'errors': errors,

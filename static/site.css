@@ -262,8 +262,8 @@ footer {
     z-index: 1001;
 }
 
-footer .container-fluid {
-    margin: 20px auto;
+footer .container-fluid .row {
+    padding: 20px 0;
 }
 
 footer a {
