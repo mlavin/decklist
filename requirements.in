@@ -1,0 +1,6 @@
+aiohttp
+aiohttp-jinja2
+jellyfish
+lxml
+redis
+requests

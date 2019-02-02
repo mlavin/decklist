@@ -1,2 +1,2 @@
-FROM python:3.5-onbuild
+FROM python:3.7-onbuild
 CMD python app.py
