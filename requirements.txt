@@ -4,19 +4,19 @@
 #
 #    pip-compile --output-file requirements.txt requirements.in
 #
-aiohttp-jinja2==1.1.0
-aiohttp==3.5.4
+aiohttp-jinja2==1.1.0     # via -r requirements.in
+aiohttp==3.5.4            # via -r requirements.in, aiohttp-jinja2
 async-timeout==3.0.1      # via aiohttp
 attrs==18.2.0             # via aiohttp
 certifi==2018.11.29       # via requests
 chardet==3.0.4            # via aiohttp, requests
 idna==2.8                 # via requests, yarl
-jellyfish==0.7.1
+jellyfish==0.7.1          # via -r requirements.in
 jinja2==2.10              # via aiohttp-jinja2
-lxml==4.3.0
+lxml==4.6.2               # via -r requirements.in
 markupsafe==1.1.0         # via jinja2
 multidict==4.5.2          # via aiohttp, yarl
-redis==3.1.0
-requests==2.21.0
+redis==3.1.0              # via -r requirements.in
+requests==2.21.0          # via -r requirements.in
 urllib3==1.24.2           # via requests
 yarl==1.3.0               # via aiohttp
